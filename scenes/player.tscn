@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://bv8fjvw6olbg3"]
+
+[ext_resource type="Script" uid="uid://bhlhxmo7k2wrc" path="res://scripts/player.gd" id="1_g2els"]
+[ext_resource type="Texture2D" uid="uid://bdjphdlmgleko" path="res://assets/temporary/temp_duck.png" id="2_qhqgy"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_m2g58"]
+size = Vector2(18, 13)
+
+[node name="CharacterBody2D" type="CharacterBody2D" unique_id=620708001]
+script = ExtResource("1_g2els")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1629916413]
+position = Vector2(0, 3.5)
+shape = SubResource("RectangleShape2D_m2g58")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1325060986]
+texture = ExtResource("2_qhqgy")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1127373009]
+limit_smoothed = true
+position_smoothing_enabled = true
