@@ -16,6 +16,10 @@ shape = SubResource("RectangleShape2D_m2g58")
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1325060986]
 texture = ExtResource("2_qhqgy")
 
-[node name="Camera2D" type="Camera2D" parent="." unique_id=1127373009]
-limit_smoothed = true
-position_smoothing_enabled = true
+[node name="JumpBuffer" type="Timer" parent="." unique_id=1251702148]
+wait_time = 0.25
+one_shot = true
+
+[node name="CoyoteTimer" type="Timer" parent="." unique_id=458245074]
+wait_time = 0.25
+one_shot = true
