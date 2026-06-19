@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://qj5f5x0iedci"]
+
+[ext_resource type="Texture2D" uid="uid://b7hprait13lio" path="res://assets/temporary/temp_wheel.png" id="1_minkj"]
+[ext_resource type="Script" uid="uid://c4xehukjiavmq" path="res://scripts/game/wheel.gd" id="1_xntae"]
+[ext_resource type="Texture2D" uid="uid://bvvvnjgctcx5d" path="res://assets/temporary/temp_ticker.png" id="2_xntae"]
+
+[node name="wheel" type="Node2D" unique_id=615941058]
+script = ExtResource("1_xntae")
+
+[node name="Wheel" type="Sprite2D" parent="." unique_id=1990268338]
+position = Vector2(166.5, 83)
+texture = ExtResource("1_minkj")
+
+[node name="Ticker" type="Sprite2D" parent="." unique_id=1877928631]
+position = Vector2(166.5, 83)
+texture = ExtResource("2_xntae")
+
+[node name="DisplayMessage" type="Label" parent="." unique_id=1208552787]
+offset_right = 40.0
+offset_bottom = 23.0
