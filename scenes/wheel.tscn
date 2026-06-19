@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://mns2hc3rt60x"]
+
+[ext_resource type="Texture2D" uid="uid://ly0gicakui65" path="res://assets/temporary/wheel.png" id="1_mv24a"]
+[ext_resource type="Script" uid="uid://46pu1h3uoxo1" path="res://scripts/wheel.gd" id="2_gwn81"]
+[ext_resource type="Texture2D" uid="uid://cchgtf3cucq83" path="res://assets/temporary/bar.png" id="3_mv24a"]
+[ext_resource type="Texture2D" uid="uid://c8ujqwkp5s2nv" path="res://assets/temporary/ticker.png" id="4_3mgug"]
+
+[node name="wheel" type="Node2D" unique_id=473682367]
+script = ExtResource("2_gwn81")
+
+[node name="wheel" type="Sprite2D" parent="." unique_id=82469255]
+position = Vector2(167.00002, 102.00001)
+scale = Vector2(0.10525001, 0.10525001)
+texture = ExtResource("1_mv24a")
+
+[node name="2" type="Sprite2D" parent="." unique_id=1798992530]
+position = Vector2(165.5, 79.5)
+scale = Vector2(0.1755, 0.1395)
+texture = ExtResource("3_mv24a")
+
+[node name="2(1)" type="Sprite2D" parent="." unique_id=334390628]
+position = Vector2(164, 62)
+scale = Vector2(0.2235, 0.11531252)
+texture = ExtResource("4_3mgug")
+
+[node name="DisplayMessage" type="Label" parent="." unique_id=829231386]
+visible = false
+offset_right = 317.0
+offset_bottom = 181.0
+text = "OMG LEVEL "
