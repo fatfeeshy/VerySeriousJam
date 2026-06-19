@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://mns2hc3rt60x"]
+
+[ext_resource type="Texture2D" uid="uid://djcferf5idjc0" path="res://wheel.png" id="1_e0ure"]
+[ext_resource type="Script" uid="uid://46pu1h3uoxo1" path="res://wheel.gd" id="2_gwn81"]
+
+[node name="Game" type="Node2D" unique_id=473682367]
+
+[node name="Wheel" type="Sprite2D" parent="." unique_id=1996331296]
+position = Vector2(120, 173)
+texture = ExtResource("1_e0ure")
+script = ExtResource("2_gwn81")
