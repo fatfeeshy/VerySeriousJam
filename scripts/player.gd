@@ -7,13 +7,17 @@ var acceleration := 19
 
 @onready var jump_buffer: Timer = $JumpBuffer
 @onready var coyote_timer: Timer = $CoyoteTimer
+@onready var camera: Camera2D = $Camera
 
 var propeller_hat_jump_is_on : bool
 var propeller_hat_jump := -180
 var propeller_hat_gravity := 3
 
+var last_checkpoint : Vector2
+
 func _ready() -> void:
-	# Activates propeller hat controls
+	# Activates propeller hat controls if it's turned on
+	# You can turn it on in the _ready() function of a level scene
 	if propeller_hat_jump_is_on:
 		jump = propeller_hat_jump
 		gravity = propeller_hat_gravity
@@ -26,6 +30,17 @@ func _physics_process(_delta: float) -> void:
 	Jumping()
 	Gravity()
 	move_and_slide()
+
+# --- RESPAWNING --- #
+
+func set_checkpoint_at(checkpoint_pos: Vector2):
+	last_checkpoint = checkpoint_pos
+
+func respawn():
+	# Cool fade in transition idk
+	position = last_checkpoint # Then set the player back to the checkpoint
+
+# --- HORIZONTAL AND VERTICAL MOVEMENT --- #
 
 func Movement():
 	var direction := Input.get_axis("left", "right")
