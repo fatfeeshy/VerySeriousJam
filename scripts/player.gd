@@ -1,12 +1,25 @@
 extends CharacterBody2D
 
-var speed := 100
-var jump := 80
-var gravity := 5
-var acceleration := 20
+var speed := 90
+var jump := -125
+var gravity := 4
+var acceleration := 19
 
 @onready var jump_buffer: Timer = $JumpBuffer
 @onready var coyote_timer: Timer = $CoyoteTimer
+
+var propeller_hat_jump_is_on : bool
+var propeller_hat_jump := -180
+var propeller_hat_gravity := 3
+
+func _ready() -> void:
+	# Activates propeller hat controls
+	if propeller_hat_jump_is_on:
+		jump = propeller_hat_jump
+		gravity = propeller_hat_gravity
+	else:
+		jump = jump
+		gravity = gravity
 
 func _physics_process(_delta: float) -> void:
 	Movement()
@@ -21,9 +34,9 @@ func Movement():
 
 var jumped : bool # supposed to be outside of Jumping()
 func Jumping():
-	#var jump_key_is_held := Input.is_action_pressed("jump")
 	var attempted_buffer : bool
 	
+	# Mini State Machine
 	if is_on_floor():
 		attempted_buffer = false
 		jumped = false
@@ -51,7 +64,7 @@ func Jumping():
 		Jump()
 
 func Jump():
-	velocity.y -= jump
+	velocity.y = jump
 	jumped = true
 
 func Gravity():
