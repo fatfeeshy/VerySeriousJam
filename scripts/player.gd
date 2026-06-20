@@ -1,4 +1,5 @@
 extends CharacterBody2D
+signal reset
 
 var speed := 90
 var jump := -125
@@ -39,6 +40,7 @@ func set_checkpoint_at(checkpoint_pos: Vector2):
 func respawn():
 	# Cool fade in transition idk
 	position = last_checkpoint # Then set the player back to the checkpoint
+	emit_signal("reset")
 
 # --- HORIZONTAL AND VERTICAL MOVEMENT --- #
 
@@ -86,3 +88,12 @@ func Gravity():
 	if is_on_floor():
 		return
 	velocity.y += gravity
+
+
+
+
+func _on_hurtbox_body_shape_entered(body_rid: RID, body: Node2D, body_shape_index: int, local_shape_index: int) -> void:
+	print("Signal fired!", body)
+	if body is TileMapLayer:
+		respawn()
+		print("dead")

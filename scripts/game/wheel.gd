@@ -31,7 +31,7 @@ func spin():
 
 	var tween = create_tween()
 	# IDK about the diff transition types testing seems all similar 
-	tween.set_trans(Tween.TRANS_QUART)
+	tween.set_trans(Tween.TRANS_CUBIC)
 	tween.set_ease(Tween.EASE_IN)
 
 	tween.tween_property(
@@ -54,6 +54,6 @@ func spin():
 			display_message.text = "Level 4!"
 	
 func _ready() -> void:
-	#spin()
+	spin()
 	#display_message.show()
 	pass

@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://dhks172whcaie"]
+
+[ext_resource type="Texture2D" uid="uid://b7lpgyai8gamt" path="res://assets/button.png" id="1_mi6dp"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t5fa5"]
+size = Vector2(8, 4)
+
+[node name="Button" type="Area2D" unique_id=424277492]
+
+[node name="Sprite" type="Sprite2D" parent="." unique_id=87531946]
+texture = ExtResource("1_mi6dp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1843215810]
+position = Vector2(0, 2)
+shape = SubResource("RectangleShape2D_t5fa5")
