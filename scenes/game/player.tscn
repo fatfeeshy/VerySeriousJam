@@ -38,8 +38,6 @@ one_shot = true
 
 [node name="Camera" type="Camera2D" parent="." unique_id=1740932993]
 process_callback = 0
-limit_left = 0
-limit_bottom = 180
 limit_smoothed = true
 position_smoothing_enabled = true
 

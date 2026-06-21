@@ -25,6 +25,13 @@ func _ready() -> void:
 	else:
 		jump = jump
 		gravity = gravity
+	
+	match get_tree().current_scene.name:
+		"SecretaryLevel":
+			camera.limit_bottom = 180
+			camera.limit_right = 688
+			camera.limit_left = 0
+			camera.limit_top = -312
 
 func _physics_process(_delta: float) -> void:
 	Movement()
@@ -40,7 +47,7 @@ func set_checkpoint_at(checkpoint_pos: Vector2):
 func respawn():
 	# Cool fade in transition idk
 	position = last_checkpoint # Then set the player back to the checkpoint
-	emit_signal("reset")
+	emit_signal("reset") # For accountant level
 
 # --- HORIZONTAL AND VERTICAL MOVEMENT --- #
 
@@ -88,9 +95,6 @@ func Gravity():
 	if is_on_floor():
 		return
 	velocity.y += gravity
-
-
-
 
 func _on_hurtbox_body_shape_entered(body_rid: RID, body: Node2D, body_shape_index: int, local_shape_index: int) -> void:
 	print("Signal fired!", body)
