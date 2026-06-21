@@ -1,13 +1,13 @@
 [gd_scene format=4 uid="uid://c6p6aio34tgtv"]
 
 [ext_resource type="PackedScene" uid="uid://drg2u5010u810" path="res://scenes/levels/checkpoint.tscn" id="1_f7csh"]
-[ext_resource type="PackedScene" uid="uid://dhks172whcaie" path="res://scenes/button.tscn" id="1_fbwkm"]
+[ext_resource type="PackedScene" uid="uid://dhks172whcaie" path="res://scenes/levels/button.tscn" id="1_fbwkm"]
 [ext_resource type="PackedScene" uid="uid://bv8fjvw6olbg3" path="res://scenes/game/player.tscn" id="1_gph52"]
-[ext_resource type="Script" uid="uid://byftwot7rc763" path="res://scenes/buttonOb1.gd" id="2_fbwkm"]
+[ext_resource type="Script" uid="uid://byftwot7rc763" path="res://scripts/levels/buttonOb1.gd" id="2_fbwkm"]
 [ext_resource type="Texture2D" uid="uid://3csmolr44sv2" path="res://assets/lasers.png" id="2_fsxpt"]
 [ext_resource type="Texture2D" uid="uid://bf6hsixyeigcg" path="res://assets/temporary/temp_tile.png" id="3_c344s"]
 [ext_resource type="Texture2D" uid="uid://bdjphdlmgleko" path="res://assets/temporary/temp_duck.png" id="5_f7csh"]
-[ext_resource type="Script" uid="uid://rh7ngeuk14lp" path="res://scenes/levels/laser_ob_1.gd" id="6_44c5e"]
+[ext_resource type="Script" uid="uid://rh7ngeuk14lp" path="res://scripts/levels/laser_ob_1.gd" id="6_44c5e"]
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_t5fa5"]
 lifetime_randomness = 0.5
