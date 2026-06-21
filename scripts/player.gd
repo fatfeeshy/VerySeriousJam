@@ -1,5 +1,6 @@
 extends CharacterBody2D
 signal reset
+@onready var quack: AudioStreamPlayer = $Quack
 
 var speed := 90
 var jump := -125
@@ -16,6 +17,10 @@ var propeller_hat_gravity := 3
 
 var last_checkpoint : Vector2
 
+func _process(delta: float) -> void:
+	if Input.is_action_just_pressed("quack"):
+		quack.play()
+		
 func _ready() -> void:
 	# Sets camera limit for player or other necessary variables
 	match get_tree().current_scene.name:
@@ -30,6 +35,11 @@ func _ready() -> void:
 			camera.limit_right = 320
 			camera.limit_left = 0
 			camera.limit_top = -1128
+		"accountantLevel":
+			camera.limit_bottom = 235
+			camera.limit_right = 578
+			camera.limit_left = -2
+			camera.limit_top = -228
 	
 	# Activates propeller hat controls if it's turned on
 	if propeller_hat_jump_is_on:
@@ -39,6 +49,7 @@ func _ready() -> void:
 		jump = jump
 		gravity = gravity
 
+		
 func _physics_process(_delta: float) -> void:
 	Movement()
 	Jumping()
