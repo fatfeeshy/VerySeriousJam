@@ -17,21 +17,27 @@ var propeller_hat_gravity := 3
 var last_checkpoint : Vector2
 
 func _ready() -> void:
-	# Activates propeller hat controls if it's turned on
-	# You can turn it on in the _ready() function of a level scene
-	if propeller_hat_jump_is_on:
-		jump = propeller_hat_jump
-		gravity = propeller_hat_gravity
-	else:
-		jump = jump
-		gravity = gravity
-	
+	# Sets camera limit for player or other necessary variables
 	match get_tree().current_scene.name:
 		"SecretaryLevel":
 			camera.limit_bottom = 180
 			camera.limit_right = 688
 			camera.limit_left = 0
 			camera.limit_top = -312
+		"FriendLevel":
+			propeller_hat_jump_is_on = true
+			camera.limit_bottom = 185
+			camera.limit_right = 320
+			camera.limit_left = 0
+			camera.limit_top = -1128
+	
+	# Activates propeller hat controls if it's turned on
+	if propeller_hat_jump_is_on:
+		jump = propeller_hat_jump
+		gravity = propeller_hat_gravity
+	else:
+		jump = jump
+		gravity = gravity
 
 func _physics_process(_delta: float) -> void:
 	Movement()

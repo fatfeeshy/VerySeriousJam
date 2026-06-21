@@ -7,7 +7,6 @@ extends Node2D
 @onready var red_timer: Timer = $RedTimer
 @onready var transition_timer: Timer = $TransitionTimer
 
-#var green : bool
 var red : bool
 var player_at_risk : bool
 
