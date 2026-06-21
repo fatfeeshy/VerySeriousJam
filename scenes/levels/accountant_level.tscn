@@ -52,18 +52,18 @@ sources/0 = SubResource("TileSetAtlasSource_fbwkm")
 
 [node name="accountantLevel" type="Node2D" unique_id=656050623]
 
-[node name="ButtonOb1" parent="." unique_id=424277492 instance=ExtResource("1_fbwkm")]
-position = Vector2(180, -120)
-rotation = 1.5707964
-script = ExtResource("2_fbwkm")
-
 [node name="Node2D" type="Node2D" parent="." unique_id=1017660903]
 
 [node name="Checkpoint" parent="Node2D" unique_id=1839929040 instance=ExtResource("1_f7csh")]
 position = Vector2(41, -138)
 
+[node name="ButtonOb1" parent="." unique_id=424277492 instance=ExtResource("1_fbwkm")]
+position = Vector2(180, -120)
+rotation = 1.5707964
+script = ExtResource("2_fbwkm")
+
 [node name="Player" parent="." unique_id=620708001 instance=ExtResource("1_gph52")]
-position = Vector2(48, -143)
+position = Vector2(56, -144)
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="." unique_id=1645781548]
 position = Vector2(306, -166)
