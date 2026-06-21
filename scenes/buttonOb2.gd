@@ -1,5 +1,5 @@
 extends Area2D
-@onready var laser_ob_1: TileMapLayer = $"../Tiles/LaserOb1"
+@onready var laser_ob_2: TileMapLayer = $"../Tiles/LaserOb2"
 
 
 # Called when the node enters the scene tree for the first time.
@@ -13,5 +13,5 @@ func _process(delta: float) -> void:
 
 
 func _on_area_entered(area: Area2D) -> void:
-	laser_ob_1.collision_enabled = false
-	laser_ob_1.modulate = Color(1, 1, 1, 0.2)
+	laser_ob_2.collision_enabled = false
+	laser_ob_2.modulate = Color(1, 1, 1, 0.2)

@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://rjaq1x7pwexb"]
+
+[ext_resource type="Texture2D" uid="uid://bf6hsixyeigcg" path="res://assets/temporary/temp_tile.png" id="1_ba0x2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t5fa5"]
+size = Vector2(8, 8)
+
+[node name="platform" type="AnimatableBody2D" unique_id=1272930133]
+
+[node name="TempTile" type="Sprite2D" parent="." unique_id=1875685558]
+texture = ExtResource("1_ba0x2")
+region_enabled = true
+region_rect = Rect2(0, 8, 8, 8)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1876050589]
+shape = SubResource("RectangleShape2D_t5fa5")

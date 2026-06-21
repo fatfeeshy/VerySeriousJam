@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bhlhxmo7k2wrc" path="res://scripts/player.gd" id="1_g2els"]
 [ext_resource type="Texture2D" uid="uid://bdjphdlmgleko" path="res://assets/temporary/temp_duck.png" id="2_qhqgy"]
+[ext_resource type="AudioStream" uid="uid://dthv500mf5ufd" path="res://assets/quack_5.mp3" id="3_u3rb4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_t5fa5"]
 size = Vector2(16, 14)
@@ -29,7 +30,7 @@ shape = SubResource("RectangleShape2D_m2g58")
 texture = ExtResource("2_qhqgy")
 
 [node name="JumpBuffer" type="Timer" parent="." unique_id=1251702148]
-wait_time = 0.1
+wait_time = 0.05
 one_shot = true
 
 [node name="CoyoteTimer" type="Timer" parent="." unique_id=458245074]
@@ -40,5 +41,8 @@ one_shot = true
 process_callback = 0
 limit_smoothed = true
 position_smoothing_enabled = true
+
+[node name="Quack" type="AudioStreamPlayer" parent="." unique_id=1858688231]
+stream = ExtResource("3_u3rb4")
 
 [connection signal="body_shape_entered" from="Hurtbox" to="." method="_on_hurtbox_body_shape_entered"]
