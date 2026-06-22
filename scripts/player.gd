@@ -6,6 +6,7 @@ var speed := 90
 var jump := -125
 var gravity := 4
 var acceleration := 19
+@export var strength := 80.0
 
 @onready var jump_buffer: Timer = $JumpBuffer
 @onready var coyote_timer: Timer = $CoyoteTimer
@@ -14,6 +15,12 @@ var acceleration := 19
 var propeller_hat_jump_is_on : bool
 var propeller_hat_jump := -180
 var propeller_hat_gravity := 3
+
+var normal_jump := -125
+var normal_gravity := 4
+
+var wind_force := 0.0
+var wind_acceleration := 8.0
 
 var last_checkpoint : Vector2
 
@@ -30,24 +37,13 @@ func _ready() -> void:
 			camera.limit_left = 0
 			camera.limit_top = -312
 		"FriendLevel":
-			propeller_hat_jump_is_on = true
 			camera.limit_bottom = 185
 			camera.limit_right = 320
 			camera.limit_left = 0
 			camera.limit_top = -1128
-		"accountantLevel":
-			camera.limit_bottom = 235
-			camera.limit_right = 578
-			camera.limit_left = -2
-			camera.limit_top = -228
+		
 	
-	# Activates propeller hat controls if it's turned on
-	if propeller_hat_jump_is_on:
-		jump = propeller_hat_jump
-		gravity = propeller_hat_gravity
-	else:
-		jump = jump
-		gravity = gravity
+	update_jump_settings()
 
 		
 func _physics_process(_delta: float) -> void:
@@ -55,7 +51,7 @@ func _physics_process(_delta: float) -> void:
 	Jumping()
 	Gravity()
 	move_and_slide()
-
+	ApplyWind()
 # --- RESPAWNING --- #
 
 func set_checkpoint_at(checkpoint_pos: Vector2):
@@ -113,8 +109,27 @@ func Gravity():
 		return
 	velocity.y += gravity
 
+var wind_velocity := 0.0
+
+func ApplyWind():
+	wind_velocity = move_toward(
+		wind_velocity,
+		wind_force,
+		wind_acceleration
+	)
+
+	velocity.x += wind_velocity
+	
 func _on_hurtbox_body_shape_entered(body_rid: RID, body: Node2D, body_shape_index: int, local_shape_index: int) -> void:
 	print("Signal fired!", body)
 	if body is TileMapLayer:
 		respawn()
 		print("dead")
+		
+func update_jump_settings():
+	if propeller_hat_jump_is_on:
+		jump = propeller_hat_jump
+		gravity = propeller_hat_gravity
+	else:
+		jump = normal_jump
+		gravity = normal_gravity
