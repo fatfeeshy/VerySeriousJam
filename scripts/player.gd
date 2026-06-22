@@ -6,10 +6,13 @@ var speed := 90
 var jump := -125
 var gravity := 4
 var acceleration := 19
+var facing : int
+@export var strength := 80.0
 
 @onready var jump_buffer: Timer = $JumpBuffer
 @onready var coyote_timer: Timer = $CoyoteTimer
 @onready var camera: Camera2D = $Camera
+@onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
 
 var propeller_hat_jump_is_on : bool
 var propeller_hat_jump := -180
@@ -23,10 +26,6 @@ var wind_acceleration := 3.0
 
 var last_checkpoint : Vector2
 
-func _process(delta: float) -> void:
-	if Input.is_action_just_pressed("quack"):
-		quack.play()
-		
 func _ready() -> void:
 	# Sets camera limit for player or other necessary variables
 	match get_tree().current_scene.name:
@@ -40,17 +39,18 @@ func _ready() -> void:
 			camera.limit_right = 320
 			camera.limit_left = 0
 			camera.limit_top = -1540
-		
-	
 	update_jump_settings()
 
-		
 func _physics_process(_delta: float) -> void:
 	Movement()
 	Jumping()
 	Gravity()
-	move_and_slide()
 	ApplyWind()
+	Animations()
+	if Input.is_action_just_pressed("quack"):
+		quack.play()
+	move_and_slide()
+
 # --- RESPAWNING --- #
 
 func set_checkpoint_at(checkpoint_pos: Vector2):
@@ -62,12 +62,16 @@ func respawn():
 	emit_signal("reset") # For accountant level
 
 # --- HORIZONTAL AND VERTICAL MOVEMENT --- #
-var wind_velocity := 0.0
 
 func Movement():
 	var direction := Input.get_axis("left", "right")
 	var speed_formula = speed * direction
+	
 	velocity.x = move_toward(velocity.x, speed_formula + wind_velocity, acceleration)
+	velocity.x = move_toward(velocity.x, speed_formula, acceleration)
+	
+	if Input.is_action_pressed("left"): facing = -1
+	if Input.is_action_pressed("right"): facing = 1
 
 var jumped : bool # supposed to be outside of Jumping()
 func Jumping():
@@ -109,21 +113,37 @@ func Gravity():
 		return
 	velocity.y += gravity
 
-
+var wind_velocity := 0.0
 func ApplyWind():
 	wind_velocity = move_toward(
 		wind_velocity,
 		wind_force,
 		wind_acceleration
-	)
+		)
 	print(wind_force)
-	
+	velocity.x += wind_velocity
+
 func _on_hurtbox_body_shape_entered(body_rid: RID, body: Node2D, body_shape_index: int, local_shape_index: int) -> void:
 	print("Signal fired!", body)
 	if body is TileMapLayer:
 		respawn()
 		print("dead")
-		
+
+func Animations():
+	if facing == -1:
+		sprite.flip_h = true
+	else:
+		sprite.flip_h = false
+	if is_on_floor():
+		if abs(velocity.x) > 0.0:
+			sprite.play("run")
+		else:
+			sprite.play("idle")
+	elif velocity.y < 0.0:
+		sprite.play("jump")
+	else:
+		sprite.play("fall")
+
 func update_jump_settings():
 	if propeller_hat_jump_is_on:
 		jump = propeller_hat_jump

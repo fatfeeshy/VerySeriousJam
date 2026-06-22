@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bv8fjvw6olbg3"]
 
 [ext_resource type="Script" uid="uid://bhlhxmo7k2wrc" path="res://scripts/player.gd" id="1_g2els"]
-[ext_resource type="Texture2D" uid="uid://bdjphdlmgleko" path="res://assets/temporary/temp_duck.png" id="2_qhqgy"]
+[ext_resource type="Texture2D" uid="uid://c2keo84jq7upv" path="res://assets/sprites/duck_spritesheet.png" id="2_u3rb4"]
 [ext_resource type="AudioStream" uid="uid://dthv500mf5ufd" path="res://assets/quack_5.mp3" id="3_u3rb4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_t5fa5"]
@@ -9,6 +9,113 @@ size = Vector2(16, 14)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_m2g58"]
 size = Vector2(18, 14.5)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wwvfn"]
+atlas = ExtResource("2_u3rb4")
+region = Rect2(30, 57, 15, 19)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t8yk2"]
+atlas = ExtResource("2_u3rb4")
+region = Rect2(0, 0, 15, 19)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m5ugi"]
+atlas = ExtResource("2_u3rb4")
+region = Rect2(15, 0, 15, 19)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3vq1g"]
+atlas = ExtResource("2_u3rb4")
+region = Rect2(30, 0, 15, 19)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bnwh7"]
+atlas = ExtResource("2_u3rb4")
+region = Rect2(45, 0, 15, 19)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8egkn"]
+atlas = ExtResource("2_u3rb4")
+region = Rect2(30, 38, 15, 19)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sia57"]
+atlas = ExtResource("2_u3rb4")
+region = Rect2(0, 19, 15, 19)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e605p"]
+atlas = ExtResource("2_u3rb4")
+region = Rect2(15, 19, 15, 19)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cyajl"]
+atlas = ExtResource("2_u3rb4")
+region = Rect2(30, 19, 15, 19)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fh65b"]
+atlas = ExtResource("2_u3rb4")
+region = Rect2(45, 19, 15, 19)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ey0fj"]
+atlas = ExtResource("2_u3rb4")
+region = Rect2(60, 19, 15, 19)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_knjtp"]
+atlas = ExtResource("2_u3rb4")
+region = Rect2(75, 19, 15, 19)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8ykry"]
+animations = [{
+"frames": [{
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_wwvfn")
+}],
+"loop": 0,
+"name": &"fall",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t8yk2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m5ugi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3vq1g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bnwh7")
+}],
+"loop": 1,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_8egkn")
+}],
+"loop": 0,
+"name": &"jump",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_sia57")
+}, {
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_e605p")
+}, {
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_cyajl")
+}, {
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_fh65b")
+}, {
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_ey0fj")
+}, {
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_knjtp")
+}],
+"loop": 1,
+"name": &"run",
+"speed": 5.0
+}]
 
 [node name="Player" type="CharacterBody2D" unique_id=620708001]
 script = ExtResource("1_g2els")
@@ -26,11 +133,12 @@ shape = SubResource("RectangleShape2D_t5fa5")
 position = Vector2(0, 2.75)
 shape = SubResource("RectangleShape2D_m2g58")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1325060986]
-texture = ExtResource("2_qhqgy")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=31619229]
+sprite_frames = SubResource("SpriteFrames_8ykry")
+animation = &"fall"
 
 [node name="JumpBuffer" type="Timer" parent="." unique_id=1251702148]
-wait_time = 0.05
+wait_time = 0.1
 one_shot = true
 
 [node name="CoyoteTimer" type="Timer" parent="." unique_id=458245074]
@@ -41,6 +149,7 @@ one_shot = true
 process_callback = 0
 limit_smoothed = true
 position_smoothing_enabled = true
+position_smoothing_speed = 7.0
 
 [node name="Quack" type="AudioStreamPlayer" parent="." unique_id=1858688231]
 stream = ExtResource("3_u3rb4")
