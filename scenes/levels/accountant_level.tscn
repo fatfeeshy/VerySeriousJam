@@ -410,6 +410,7 @@ position = Vector2(473, 6)
 position = Vector2(148, 188)
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="." unique_id=1645781548]
+visible = false
 position = Vector2(306, -166)
 amount = 100
 process_material = SubResource("ParticleProcessMaterial_t5fa5")
@@ -451,7 +452,7 @@ scale = Vector2(0.07763637, 0.09033203)
 texture = ExtResource("15_ncs8m")
 
 [node name="PasswordNote1" type="Sprite2D" parent="." unique_id=1909336801]
-position = Vector2(192.99998, -106.00001)
+position = Vector2(190.99998, -107)
 scale = Vector2(0.10937497, 0.15624993)
 texture = ExtResource("15_ncs8m")
 

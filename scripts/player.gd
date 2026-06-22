@@ -6,7 +6,6 @@ var speed := 90
 var jump := -125
 var gravity := 4
 var acceleration := 19
-@export var strength := 80.0
 
 @onready var jump_buffer: Timer = $JumpBuffer
 @onready var coyote_timer: Timer = $CoyoteTimer
@@ -19,8 +18,8 @@ var propeller_hat_gravity := 3
 var normal_jump := -125
 var normal_gravity := 4
 
-var wind_force := 0.0
-var wind_acceleration := 8.0
+@export var wind_force := 0.0
+var wind_acceleration := 3.0
 
 var last_checkpoint : Vector2
 
@@ -40,7 +39,7 @@ func _ready() -> void:
 			camera.limit_bottom = 185
 			camera.limit_right = 320
 			camera.limit_left = 0
-			camera.limit_top = -1128
+			camera.limit_top = -1540
 		
 	
 	update_jump_settings()
@@ -63,11 +62,12 @@ func respawn():
 	emit_signal("reset") # For accountant level
 
 # --- HORIZONTAL AND VERTICAL MOVEMENT --- #
+var wind_velocity := 0.0
 
 func Movement():
 	var direction := Input.get_axis("left", "right")
 	var speed_formula = speed * direction
-	velocity.x = move_toward(velocity.x, speed_formula, acceleration)
+	velocity.x = move_toward(velocity.x, speed_formula + wind_velocity, acceleration)
 
 var jumped : bool # supposed to be outside of Jumping()
 func Jumping():
@@ -109,7 +109,6 @@ func Gravity():
 		return
 	velocity.y += gravity
 
-var wind_velocity := 0.0
 
 func ApplyWind():
 	wind_velocity = move_toward(
@@ -117,8 +116,7 @@ func ApplyWind():
 		wind_force,
 		wind_acceleration
 	)
-
-	velocity.x += wind_velocity
+	print(wind_force)
 	
 func _on_hurtbox_body_shape_entered(body_rid: RID, body: Node2D, body_shape_index: int, local_shape_index: int) -> void:
 	print("Signal fired!", body)
