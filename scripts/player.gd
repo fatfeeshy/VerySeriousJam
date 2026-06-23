@@ -7,12 +7,16 @@ var jump := -125
 var gravity := 4
 var acceleration := 19
 var facing : int
+var dead : bool
 @export var strength := 80.0
 
 @onready var jump_buffer: Timer = $JumpBuffer
 @onready var coyote_timer: Timer = $CoyoteTimer
 @onready var camera: Camera2D = $Camera
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
+@onready var death_path: PathFollow2D = $DeathPath/PathFollow
+@onready var death_sprite: Sprite2D = $DeathPath/PathFollow/DeathSprite
+@onready var death_animation: AnimationPlayer = $DeathPath/PathFollow/DeathSprite/AnimationPlayer
 
 var propeller_hat_jump_is_on : bool
 var propeller_hat_jump := -180
@@ -42,6 +46,9 @@ func _ready() -> void:
 	update_jump_settings()
 
 func _physics_process(_delta: float) -> void:
+	if dead:
+		check_path_progress()
+		return
 	Movement()
 	Jumping()
 	Gravity()
@@ -56,10 +63,29 @@ func _physics_process(_delta: float) -> void:
 func set_checkpoint_at(checkpoint_pos: Vector2):
 	last_checkpoint = checkpoint_pos
 
-func respawn():
-	# Cool fade in transition idk
-	position = last_checkpoint # Then set the player back to the checkpoint
+func die():
+	dead = true
+	sprite.visible = false
+	death_sprite.visible = true
+	death_animation.play("spin")
 	emit_signal("reset") # For accountant level
+	# begin death fade animation
+
+func check_path_progress():
+	print(death_path.progress_ratio)
+	var path_progress_speed := 0.015
+	if death_path.progress_ratio >= 0.97:
+		respawn()
+	else:
+		death_path.progress_ratio += path_progress_speed
+
+func respawn():
+	dead = false
+	sprite.visible = true
+	death_sprite.visible = false
+	position = last_checkpoint # Then set the player back to the checkpoint
+	death_path.progress_ratio = 0.0
+	death_animation.stop()
 
 # --- HORIZONTAL AND VERTICAL MOVEMENT --- #
 
@@ -126,7 +152,7 @@ func ApplyWind():
 func _on_hurtbox_body_shape_entered(body_rid: RID, body: Node2D, body_shape_index: int, local_shape_index: int) -> void:
 	print("Signal fired!", body)
 	if body is TileMapLayer:
-		respawn()
+		die()
 		print("dead")
 
 func Animations():

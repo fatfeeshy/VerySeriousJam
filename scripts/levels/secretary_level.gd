@@ -43,7 +43,7 @@ func red_light():
 	if player.velocity != Vector2.ZERO or player_at_risk:
 		red_timer.stop()
 		red_timer.timeout.emit()
-		player.respawn()
+		player.die()
 
 func _on_red_timer_timeout() -> void:
 	red = false
