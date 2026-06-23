@@ -25,7 +25,23 @@ var normal_gravity := 4
 var wind_acceleration := 3.0
 
 var last_checkpoint : Vector2
+enum Outfits {
+	BUSINESS,
+	BUSINESS_SILLY,
+	SILLY
+}
+var curr_outfit = Outfits.BUSINESS_SILLY
 
+func get_anim_name(state: String) -> String:
+	match curr_outfit:
+		Outfits.BUSINESS:
+			return "business_" + state
+		Outfits.BUSINESS_SILLY:
+			return "business_silly_" + state
+		Outfits.SILLY:
+			return "silly_" + state
+
+	return state
 func _ready() -> void:
 	# Sets camera limit for player or other necessary variables
 	match get_tree().current_scene.name:
@@ -120,29 +136,33 @@ func ApplyWind():
 		wind_force,
 		wind_acceleration
 		)
-	print(wind_force)
 	velocity.x += wind_velocity
 
 func _on_hurtbox_body_shape_entered(body_rid: RID, body: Node2D, body_shape_index: int, local_shape_index: int) -> void:
-	print("Signal fired!", body)
 	if body is TileMapLayer:
 		respawn()
 		print("dead")
 
 func Animations():
-	if facing == -1:
-		sprite.flip_h = true
-	else:
-		sprite.flip_h = false
+	# flip
+	sprite.flip_h = facing == -1
+
+	var state := ""
+
 	if is_on_floor():
 		if abs(velocity.x) > 0.0:
-			sprite.play("run")
+			state = "run"
 		else:
-			sprite.play("idle")
+			state = "idle"
 	elif velocity.y < 0.0:
-		sprite.play("jump")
+		state = "jump"
 	else:
-		sprite.play("fall")
+		state = "fall"
+
+	var anim_name = get_anim_name(state)
+
+	if sprite.animation != anim_name:
+		sprite.play(anim_name)
 
 func update_jump_settings():
 	if propeller_hat_jump_is_on:
