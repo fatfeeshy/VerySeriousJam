@@ -8,7 +8,6 @@
 [ext_resource type="Texture2D" uid="uid://3csmolr44sv2" path="res://assets/lasers.png" id="2_fsxpt"]
 [ext_resource type="Script" uid="uid://co33nyiev07xj" path="res://scenes/buttonOb2.gd" id="3_al0yq"]
 [ext_resource type="Texture2D" uid="uid://bf6hsixyeigcg" path="res://assets/temporary/temp_tile.png" id="3_c344s"]
-[ext_resource type="Texture2D" uid="uid://bdjphdlmgleko" path="res://assets/temporary/temp_duck.png" id="5_f7csh"]
 [ext_resource type="Script" uid="uid://rh7ngeuk14lp" path="res://scripts/levels/laser_ob_1.gd" id="6_44c5e"]
 [ext_resource type="Texture2D" uid="uid://d242fdjdmxwim" path="res://assets/tilemap/foreground_floor_tiles.png" id="8_tdv1n"]
 [ext_resource type="PackedScene" uid="uid://rjaq1x7pwexb" path="res://scenes/platform.tscn" id="9_lnqko"]
@@ -358,6 +357,10 @@ _data = {
 &"new_animation_2": SubResource("Animation_al0yq")
 }
 
+[sub_resource type="LabelSettings" id="LabelSettings_a6mrt"]
+font_size = 40
+font_color = Color(0.6843272, 0.9642418, 0.6503602, 1)
+
 [node name="accountantLevel" type="Node2D" unique_id=656050623]
 script = ExtResource("1_v6ekh")
 
@@ -386,13 +389,15 @@ tile_map_data = PackedByteArray("AABOACcAAwADAAMAAABOACYAAwACAAIAAABOACUAAwACAAI
 tile_set = SubResource("TileSet_lqwq7")
 
 [node name="ButtonOb2" parent="." unique_id=424277492 instance=ExtResource("1_fbwkm")]
-position = Vector2(508, -84)
+position = Vector2(506.00003, -82)
 rotation = -3.1415925
+scale = Vector2(1.5, 1.5)
 script = ExtResource("3_al0yq")
 
 [node name="ButtonOb1" parent="." unique_id=1842859436 instance=ExtResource("1_fbwkm")]
-position = Vector2(180, -120)
+position = Vector2(182, -120.00001)
 rotation = 1.5707964
+scale = Vector2(1.5, 1.5)
 script = ExtResource("2_fbwkm")
 
 [node name="Checkpoints" type="Node2D" parent="." unique_id=1017660903]
@@ -407,17 +412,14 @@ position = Vector2(41, -138)
 position = Vector2(473, 6)
 
 [node name="Player" parent="." unique_id=620708001 groups=["player"] instance=ExtResource("1_gph52")]
-position = Vector2(148, 188)
+position = Vector2(56, -141)
+collision_layer = 3
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="." unique_id=1645781548]
 visible = false
 position = Vector2(306, -166)
 amount = 100
 process_material = SubResource("ParticleProcessMaterial_t5fa5")
-
-[node name="TempDuck" type="Sprite2D" parent="." unique_id=1037241767]
-position = Vector2(523, 195)
-texture = ExtResource("5_f7csh")
 
 [node name="platform2" parent="." unique_id=1272930133 instance=ExtResource("9_lnqko")]
 position = Vector2(238, -42)
@@ -455,6 +457,15 @@ texture = ExtResource("15_ncs8m")
 position = Vector2(190.99998, -107)
 scale = Vector2(0.10937497, 0.15624993)
 texture = ExtResource("15_ncs8m")
+
+[node name="TextEdit" type="Label" parent="PasswordNote1" unique_id=2029383834]
+offset_left = -45.714203
+offset_top = -172.80011
+offset_right = 324.2858
+offset_bottom = -31.80011
+text = "Part 1 of Password:
+5"
+label_settings = SubResource("LabelSettings_a6mrt")
 
 [node name="Laser" type="Node2D" parent="." unique_id=726026790]
 position = Vector2(193, 150)

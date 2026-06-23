@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://c87qerwkidv2y"]
+
+[ext_resource type="Script" uid="uid://cl4t77kya210y" path="res://scenes/npc/npc.gd" id="1_pcwmf"]
+[ext_resource type="PackedScene" uid="uid://b0xw5fdjot6a3" path="res://interaction/interaction area/interaction_area.tscn" id="3_s42wx"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_d7l8t"]
+radius = 7.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_pi567"]
+radius = 14.0357
+
+[node name="FunnyNPC" type="RigidBody2D" unique_id=1369399784]
+gravity_scale = 0.0
+script = ExtResource("1_pcwmf")
+
+[node name="Shape" type="CollisionShape2D" parent="." unique_id=382794789]
+shape = SubResource("CircleShape2D_d7l8t")
+
+[node name="Sprite" type="AnimatedSprite2D" parent="." unique_id=1865822844]
+scale = Vector2(0.997855, 0.772557)
+animation = &""
+frame_progress = 0.705269
+
+[node name="InteractionArea" parent="." unique_id=808190617 instance=ExtResource("3_s42wx")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea" unique_id=1908882450]
+shape = SubResource("CircleShape2D_pi567")

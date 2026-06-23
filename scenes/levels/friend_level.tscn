@@ -259,6 +259,7 @@ tile_set = SubResource("TileSet_jhq8q")
 
 [node name="Player" parent="." unique_id=620708001 groups=["player"] instance=ExtResource("3_fdtkj")]
 position = Vector2(185, -953)
+collision_layer = 3
 
 [node name="zoneOne" type="Area2D" parent="." unique_id=1941866595]
 position = Vector2(1, 0)

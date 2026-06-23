@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://g4koxu46ksak"
-path="res://.godot/imported/duck_spritesheet.png-580c61c65e9e88a145467db9e76e6df5.ctex"
+uid="uid://ct2wvnfcu4n8u"
+path="res://.godot/imported/dialog.png-d4bc32bab23eb15e16f12a6e9a9aa31d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/duck_spritesheet.png"
-dest_files=["res://.godot/imported/duck_spritesheet.png-580c61c65e9e88a145467db9e76e6df5.ctex"]
+source_file="res://text box/dialog.png"
+dest_files=["res://.godot/imported/dialog.png-d4bc32bab23eb15e16f12a6e9a9aa31d.ctex"]
 
 [params]
 
