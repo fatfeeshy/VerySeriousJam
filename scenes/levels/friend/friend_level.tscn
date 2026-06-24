@@ -3,9 +3,9 @@
 [ext_resource type="Texture2D" uid="uid://wmki6oq7mki7" path="res://assets/tilemap/foreground_tilemap.png" id="1_85cmx"]
 [ext_resource type="Texture2D" uid="uid://d242fdjdmxwim" path="res://assets/tilemap/foreground_floor_tiles.png" id="2_xhvbf"]
 [ext_resource type="PackedScene" uid="uid://bv8fjvw6olbg3" path="res://scenes/game/player.tscn" id="3_fdtkj"]
-[ext_resource type="Script" uid="uid://byuxuxsu5oeg0" path="res://scenes/levels/left_wind.gd" id="5_fdtkj"]
-[ext_resource type="Script" uid="uid://diryd5bmuffrc" path="res://scenes/levels/zone_one.gd" id="5_i5hcs"]
-[ext_resource type="Script" uid="uid://cekmos31viaad" path="res://scenes/levels/right_wind.gd" id="6_i5hcs"]
+[ext_resource type="Script" uid="uid://byuxuxsu5oeg0" path="res://scenes/levels/friend/left_wind.gd" id="5_fdtkj"]
+[ext_resource type="Script" uid="uid://diryd5bmuffrc" path="res://scenes/levels/friend/zone_one.gd" id="5_i5hcs"]
+[ext_resource type="Script" uid="uid://cekmos31viaad" path="res://scenes/levels/friend/right_wind.gd" id="6_i5hcs"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_i5hcs"]
 texture = ExtResource("1_85cmx")
@@ -237,16 +237,16 @@ sources/2 = SubResource("TileSetAtlasSource_u7woq")
 size = Vector2(248, 1196)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xhvbf"]
-size = Vector2(228, 114.375)
+size = Vector2(228, 132.1875)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i5hcs"]
-size = Vector2(228, 116.75)
+size = Vector2(228, 90.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_u7woq"]
-size = Vector2(228, 114.375)
+size = Vector2(228, 80)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5i3y1"]
-size = Vector2(228, 116.75)
+size = Vector2(228, 150.375)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8hvsd"]
 size = Vector2(228, 155.375)
@@ -265,6 +265,13 @@ collision_layer = 3
 position = Vector2(1, 0)
 script = ExtResource("5_i5hcs")
 
+[node name="Label" type="Label" parent="zoneOne" unique_id=1233002142]
+offset_left = 173.0
+offset_top = -645.0
+offset_right = 213.0
+offset_bottom = -622.0
+text = "right"
+
 [node name="HighJumpBox" type="CollisionShape2D" parent="zoneOne" unique_id=448828684]
 visible = false
 position = Vector2(188, -429)
@@ -274,14 +281,14 @@ shape = SubResource("RectangleShape2D_t5fa5")
 script = ExtResource("5_fdtkj")
 
 [node name="LeftWindBox" type="CollisionShape2D" parent="LeftWind" unique_id=2109047106]
-position = Vector2(181, -625.8125)
+position = Vector2(182, -629.90625)
 shape = SubResource("RectangleShape2D_xhvbf")
 
 [node name="RightWind" type="Area2D" parent="." unique_id=1361092739]
 script = ExtResource("6_i5hcs")
 
 [node name="LeftWindBox" type="CollisionShape2D" parent="RightWind" unique_id=2067592876]
-position = Vector2(182, -743)
+position = Vector2(182, -744.25)
 shape = SubResource("RectangleShape2D_i5hcs")
 
 [node name="LeftWind2" type="Area2D" parent="." unique_id=291165507]
@@ -289,7 +296,7 @@ position = Vector2(2, -232)
 script = ExtResource("5_fdtkj")
 
 [node name="LeftWindBox" type="CollisionShape2D" parent="LeftWind2" unique_id=1715965191]
-position = Vector2(181, -625.8125)
+position = Vector2(182, -604)
 shape = SubResource("RectangleShape2D_u7woq")
 
 [node name="RightWind2" type="Area2D" parent="." unique_id=51295141]
@@ -297,7 +304,7 @@ position = Vector2(2, -232)
 script = ExtResource("6_i5hcs")
 
 [node name="LeftWindBox" type="CollisionShape2D" parent="RightWind2" unique_id=2000993147]
-position = Vector2(182, -743)
+position = Vector2(184, -719.8125)
 shape = SubResource("RectangleShape2D_5i3y1")
 
 [node name="LeftWind3" type="Area2D" parent="." unique_id=288136856]
@@ -315,7 +322,7 @@ script = ExtResource("6_i5hcs")
 wind_force = 50.0
 
 [node name="LeftWindBox" type="CollisionShape2D" parent="RightWind3" unique_id=995313168]
-position = Vector2(182, -743)
+position = Vector2(182, -741.5)
 shape = SubResource("RectangleShape2D_i5hcs")
 
 [node name="LeftWind4" type="Area2D" parent="." unique_id=903732701]
@@ -324,38 +331,8 @@ script = ExtResource("5_fdtkj")
 wind_force = -50.0
 
 [node name="LeftWindBox" type="CollisionShape2D" parent="LeftWind4" unique_id=1844242480]
-position = Vector2(181, -646.3125)
+position = Vector2(181, -633)
 shape = SubResource("RectangleShape2D_8hvsd")
-
-[node name="LeftWind5" type="Area2D" parent="." unique_id=1791859147]
-script = ExtResource("5_fdtkj")
-
-[node name="LeftWindBox" type="CollisionShape2D" parent="LeftWind5" unique_id=1062696018]
-position = Vector2(181, -625.8125)
-shape = SubResource("RectangleShape2D_xhvbf")
-
-[node name="RightWind4" type="Area2D" parent="." unique_id=2032002233]
-script = ExtResource("6_i5hcs")
-
-[node name="LeftWindBox" type="CollisionShape2D" parent="RightWind4" unique_id=2132690103]
-position = Vector2(182, -743)
-shape = SubResource("RectangleShape2D_i5hcs")
-
-[node name="LeftWind6" type="Area2D" parent="." unique_id=1765994124]
-position = Vector2(2, -232)
-script = ExtResource("5_fdtkj")
-
-[node name="LeftWindBox" type="CollisionShape2D" parent="LeftWind6" unique_id=991638869]
-position = Vector2(181, -625.8125)
-shape = SubResource("RectangleShape2D_u7woq")
-
-[node name="RightWind5" type="Area2D" parent="." unique_id=698609689]
-position = Vector2(2, -232)
-script = ExtResource("6_i5hcs")
-
-[node name="LeftWindBox" type="CollisionShape2D" parent="RightWind5" unique_id=75012178]
-position = Vector2(182, -743)
-shape = SubResource("RectangleShape2D_5i3y1")
 
 [connection signal="body_entered" from="zoneOne" to="zoneOne" method="_on_body_entered"]
 [connection signal="body_exited" from="zoneOne" to="zoneOne" method="_on_body_exited"]
@@ -373,11 +350,3 @@ shape = SubResource("RectangleShape2D_5i3y1")
 [connection signal="body_exited" from="RightWind3" to="RightWind3" method="_on_body_exited"]
 [connection signal="body_entered" from="LeftWind4" to="LeftWind4" method="_on_body_entered"]
 [connection signal="body_exited" from="LeftWind4" to="LeftWind4" method="_on_body_exited"]
-[connection signal="body_entered" from="LeftWind5" to="LeftWind5" method="_on_body_entered"]
-[connection signal="body_exited" from="LeftWind5" to="LeftWind5" method="_on_body_exited"]
-[connection signal="body_entered" from="RightWind4" to="RightWind4" method="_on_body_entered"]
-[connection signal="body_exited" from="RightWind4" to="RightWind4" method="_on_body_exited"]
-[connection signal="body_entered" from="LeftWind6" to="LeftWind6" method="_on_body_entered"]
-[connection signal="body_exited" from="LeftWind6" to="LeftWind6" method="_on_body_exited"]
-[connection signal="body_entered" from="RightWind5" to="RightWind5" method="_on_body_entered"]
-[connection signal="body_exited" from="RightWind5" to="RightWind5" method="_on_body_exited"]

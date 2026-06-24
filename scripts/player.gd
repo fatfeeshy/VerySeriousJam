@@ -8,7 +8,6 @@ var gravity := 4
 var acceleration := 19
 var facing : int
 var dead : bool
-@export var strength := 80.0
 
 @onready var jump_buffer: Timer = $JumpBuffer
 @onready var coyote_timer: Timer = $CoyoteTimer
@@ -104,13 +103,13 @@ func respawn():
 	death_animation.stop()
 
 # --- HORIZONTAL AND VERTICAL MOVEMENT --- #
+var wind_velocity := 0.0
 
 func Movement():
 	var direction := Input.get_axis("left", "right")
 	var speed_formula = speed * direction
 	
 	velocity.x = move_toward(velocity.x, speed_formula + wind_velocity, acceleration)
-	velocity.x = move_toward(velocity.x, speed_formula, acceleration)
 	
 	if Input.is_action_pressed("left"): facing = -1
 	if Input.is_action_pressed("right"): facing = 1
@@ -155,14 +154,12 @@ func Gravity():
 		return
 	velocity.y += gravity
 
-var wind_velocity := 0.0
 func ApplyWind():
 	wind_velocity = move_toward(
 		wind_velocity,
 		wind_force,
 		wind_acceleration
 		)
-	velocity.x += wind_velocity
 
 func _on_hurtbox_body_shape_entered(body_rid: RID, body: Node2D, body_shape_index: int, local_shape_index: int) -> void:
 	if body is TileMapLayer:
