@@ -1,6 +1,6 @@
 extends CharacterBody2D
 signal reset
-@onready var quack: AudioStreamPlayer = $Quack
+signal died
 
 var speed := 90
 var jump := -125
@@ -8,6 +8,7 @@ var gravity := 4
 var acceleration := 19
 var facing : int
 var dead : bool
+var last_checkpoint : Vector2
 
 @onready var jump_buffer: Timer = $JumpBuffer
 @onready var coyote_timer: Timer = $CoyoteTimer
@@ -15,7 +16,11 @@ var dead : bool
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var death_path: PathFollow2D = $DeathPath/PathFollow
 @onready var death_sprite: Sprite2D = $DeathPath/PathFollow/DeathSprite
-@onready var death_animation: AnimationPlayer = $DeathPath/PathFollow/DeathSprite/AnimationPlayer
+@onready var death_animation: AnimationPlayer = $DeathAnimation
+@onready var death_transition: Sprite2D = $DeathTransition
+@onready var death_transition_player: AnimationPlayer = $DeathTransition/DeathTransitionPlayer
+@onready var secretary_panel: Panel = $CanvasLayer/SecretaryPanel
+@onready var quack: AudioStreamPlayer = $Quack
 
 var propeller_hat_jump_is_on : bool
 var propeller_hat_jump := -180
@@ -27,7 +32,6 @@ var normal_gravity := 4
 @export var wind_force := 0.0
 var wind_acceleration := 3.0
 
-var last_checkpoint : Vector2
 enum Outfits {
 	BUSINESS,
 	BUSINESS_SILLY,
@@ -46,6 +50,7 @@ func get_anim_name(state: String) -> String:
 
 	return state
 func _ready() -> void:
+	death_transition.visible = false
 	# Sets camera limit for player or other necessary variables
 	match get_tree().current_scene.name:
 		"SecretaryLevel":
@@ -58,9 +63,9 @@ func _ready() -> void:
 			camera.limit_right = 320
 			camera.limit_left = 0
 			camera.limit_top = -1540
-	update_jump_settings()
 
 func _physics_process(_delta: float) -> void:
+	update_jump_settings()
 	if dead:
 		check_path_progress()
 		return
@@ -83,11 +88,12 @@ func die():
 	sprite.visible = false
 	death_sprite.visible = true
 	death_animation.play("spin")
+	death_transition_player.play("death_transition")
 	emit_signal("reset") # For accountant level
+	emit_signal("died") # For boss
 	# begin death fade animation
 
 func check_path_progress():
-	print(death_path.progress_ratio)
 	var path_progress_speed := 0.015
 	if death_path.progress_ratio >= 0.97:
 		respawn()
@@ -103,6 +109,7 @@ func respawn():
 	death_animation.stop()
 
 # --- HORIZONTAL AND VERTICAL MOVEMENT --- #
+
 var wind_velocity := 0.0
 
 func Movement():
@@ -154,6 +161,8 @@ func Gravity():
 		return
 	velocity.y += gravity
 
+# --- LEVEL SPECIFIC CODE --- #
+
 func ApplyWind():
 	wind_velocity = move_toward(
 		wind_velocity,
@@ -165,6 +174,26 @@ func _on_hurtbox_body_shape_entered(body_rid: RID, body: Node2D, body_shape_inde
 	if body is TileMapLayer:
 		die()
 		print("dead")
+
+func update_jump_settings():
+	if propeller_hat_jump_is_on:
+		jump = propeller_hat_jump
+		gravity = propeller_hat_gravity
+	else:
+		jump = normal_jump
+		gravity = normal_gravity
+
+func update_border_color(border_clr: String):
+	var red_color := Color(0.80, 0, 0, 1)
+	var green_color := Color(0, 0.80, 0, 1)
+	var border: StyleBoxFlat = secretary_panel.get_theme_stylebox("panel")
+	match border_clr:
+		"green":
+			border.border_color = green_color
+		"red":
+			border.border_color = red_color
+
+# --- OTHER --- #
 
 func Animations():
 	# flip
@@ -186,11 +215,3 @@ func Animations():
 
 	if sprite.animation != anim_name:
 		sprite.play(anim_name)
-
-func update_jump_settings():
-	if propeller_hat_jump_is_on:
-		jump = propeller_hat_jump
-		gravity = propeller_hat_gravity
-	else:
-		jump = normal_jump
-		gravity = normal_gravity

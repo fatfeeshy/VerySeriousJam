@@ -3,12 +3,13 @@
 [ext_resource type="Script" uid="uid://bhlhxmo7k2wrc" path="res://scripts/player.gd" id="1_g2els"]
 [ext_resource type="Texture2D" uid="uid://g4koxu46ksak" path="res://assets/sprites/duck_spritesheet.png" id="2_u3rb4"]
 [ext_resource type="AudioStream" uid="uid://dthv500mf5ufd" path="res://assets/quack_5.mp3" id="3_u3rb4"]
+[ext_resource type="Texture2D" uid="uid://ep8oc7r0yimh" path="res://assets/tilemap/window_decor_tilemap.png" id="4_nybob"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_t5fa5"]
 size = Vector2(16, 14)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_m2g58"]
-size = Vector2(18, 14.5)
+size = Vector2(12, 12)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_t8yk2"]
 atlas = ExtResource("2_u3rb4")
@@ -197,13 +198,13 @@ region = Rect2(75, 19, 15, 19)
 [sub_resource type="SpriteFrames" id="SpriteFrames_8ykry"]
 animations = [{
 "frames": [{
-"duration": 1.0,
+"duration": 0.5,
 "texture": SubResource("AtlasTexture_t8yk2")
 }, {
-"duration": 1.0,
+"duration": 0.5,
 "texture": SubResource("AtlasTexture_m5ugi")
 }, {
-"duration": 1.0,
+"duration": 0.5,
 "texture": SubResource("AtlasTexture_3vq1g")
 }],
 "loop": 0,
@@ -242,22 +243,22 @@ animations = [{
 "speed": 5.0
 }, {
 "frames": [{
-"duration": 1.0,
+"duration": 0.5,
 "texture": SubResource("AtlasTexture_74cnq")
 }, {
-"duration": 1.0,
+"duration": 0.5,
 "texture": SubResource("AtlasTexture_3vrwl")
 }, {
-"duration": 1.0,
+"duration": 0.5,
 "texture": SubResource("AtlasTexture_wgy36")
 }, {
-"duration": 1.0,
+"duration": 0.5,
 "texture": SubResource("AtlasTexture_cqjlk")
 }, {
-"duration": 1.0,
+"duration": 0.5,
 "texture": SubResource("AtlasTexture_judl8")
 }, {
-"duration": 1.0,
+"duration": 0.5,
 "texture": SubResource("AtlasTexture_51fhs")
 }],
 "loop": 1,
@@ -265,13 +266,13 @@ animations = [{
 "speed": 5.0
 }, {
 "frames": [{
-"duration": 1.0,
+"duration": 0.5,
 "texture": SubResource("AtlasTexture_pft2h")
 }, {
-"duration": 1.0,
+"duration": 0.5,
 "texture": SubResource("AtlasTexture_rpvn3")
 }, {
-"duration": 1.0,
+"duration": 0.5,
 "texture": SubResource("AtlasTexture_v7uls")
 }],
 "loop": 0,
@@ -310,22 +311,22 @@ animations = [{
 "speed": 5.0
 }, {
 "frames": [{
-"duration": 1.0,
+"duration": 0.5,
 "texture": SubResource("AtlasTexture_fpvr6")
 }, {
-"duration": 1.0,
+"duration": 0.5,
 "texture": SubResource("AtlasTexture_dhrtq")
 }, {
-"duration": 1.0,
+"duration": 0.5,
 "texture": SubResource("AtlasTexture_a6jc5")
 }, {
-"duration": 1.0,
+"duration": 0.5,
 "texture": SubResource("AtlasTexture_iecro")
 }, {
-"duration": 1.0,
+"duration": 0.5,
 "texture": SubResource("AtlasTexture_u5a7k")
 }, {
-"duration": 1.0,
+"duration": 0.5,
 "texture": SubResource("AtlasTexture_j5i4e")
 }],
 "loop": 1,
@@ -395,12 +396,6 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="Curve2D" id="Curve2D_u3rb4"]
-_data = {
-"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 67.50854, 0.23939197, -67.50854, -0.23939197, -89, -48, 0, 0, 0, 0, -194, 17)
-}
-point_count = 3
-
 [sub_resource type="Animation" id="Animation_u3rb4"]
 length = 0.001
 tracks/0/type = "value"
@@ -414,6 +409,30 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../../../DeathTransition:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../../../DeathTransition:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -196)]
 }
 
 [sub_resource type="Animation" id="Animation_nybob"]
@@ -438,6 +457,83 @@ _data = {
 &"spin": SubResource("Animation_nybob")
 }
 
+[sub_resource type="Curve2D" id="Curve2D_u3rb4"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 67.50854, 0.23939197, -67.50854, -0.23939197, -89, -48, 0, 0, 0, 0, -194, 17)
+}
+point_count = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u3rb4"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+draw_center = false
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(0, 0.8, 0, 1)
+border_blend = true
+
+[sub_resource type="Animation" id="Animation_68xwl"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("DeathTransition:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -330)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("DeathTransition:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_wwvfn"]
+resource_name = "hi"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("DeathTransition:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, -496.5), Vector2(0, 300)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("DeathTransition:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.05, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_t8yk2"]
+_data = {
+&"RESET": SubResource("Animation_68xwl"),
+&"death_transition": SubResource("Animation_wwvfn")
+}
+
 [node name="Player" type="CharacterBody2D" unique_id=620708001]
 script = ExtResource("1_g2els")
 
@@ -447,17 +543,17 @@ collision_layer = 3
 collision_mask = 16
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox" unique_id=2021628327]
-position = Vector2(0, -0.5)
+position = Vector2(0, -1.4999998)
 scale = Vector2(0.7084495, 0.8690998)
 shape = SubResource("RectangleShape2D_t5fa5")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1629916413]
-position = Vector2(0, 2.75)
+position = Vector2(0, 2.5)
 shape = SubResource("RectangleShape2D_m2g58")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=31619229]
 sprite_frames = SubResource("SpriteFrames_8ykry")
-animation = &"business_run"
+animation = &"silly_fall"
 
 [node name="JumpBuffer" type="Timer" parent="." unique_id=1251702148]
 wait_time = 0.1
@@ -476,6 +572,10 @@ position_smoothing_speed = 7.0
 [node name="Quack" type="AudioStreamPlayer" parent="." unique_id=1858688231]
 stream = ExtResource("3_u3rb4")
 
+[node name="DeathAnimation" type="AnimationPlayer" parent="." unique_id=243041304]
+root_node = NodePath("../DeathPath/PathFollow/DeathSprite")
+libraries/ = SubResource("AnimationLibrary_68xwl")
+
 [node name="DeathPath" type="Path2D" parent="." unique_id=2005909430]
 curve = SubResource("Curve2D_u3rb4")
 
@@ -489,7 +589,25 @@ texture = ExtResource("2_u3rb4")
 region_enabled = true
 region_rect = Rect2(0, 0, 15, 19)
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="DeathPath/PathFollow/DeathSprite" unique_id=243041304]
-libraries/ = SubResource("AnimationLibrary_68xwl")
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=355234839]
+
+[node name="SecretaryPanel" type="Panel" parent="CanvasLayer" unique_id=617747706]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_u3rb4")
+
+[node name="DeathTransition" type="Sprite2D" parent="." unique_id=1841622478]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(0, -330)
+scale = Vector2(28.406248, 20.874998)
+texture = ExtResource("4_nybob")
+
+[node name="DeathTransitionPlayer" type="AnimationPlayer" parent="DeathTransition" unique_id=992253682]
+root_node = NodePath("../..")
+libraries/ = SubResource("AnimationLibrary_t8yk2")
 
 [connection signal="body_shape_entered" from="Hurtbox" to="." method="_on_hurtbox_body_shape_entered"]

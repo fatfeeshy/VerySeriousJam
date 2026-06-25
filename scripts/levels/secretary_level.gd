@@ -12,6 +12,7 @@ var player_at_risk : bool
 
 func _ready():
 	player.last_checkpoint = checkpoint.global_position
+	player.secretary_panel.visible = true
 	green_light()
 
 func _process(_delta: float) -> void:
@@ -23,6 +24,7 @@ func _process(_delta: float) -> void:
 
 func green_light():
 	randomize()
+	player.update_border_color("green")
 	var more_green_time = randf_range(0.5, 2.0)
 	green_timer.wait_time = 3.0 + more_green_time
 	green_timer.start()
@@ -31,7 +33,7 @@ func _on_green_timer_timeout() -> void:
 	transition_light()
 
 func transition_light():
-	# Cool effect thing that is red
+	player.update_border_color("red")
 	transition_timer.start()
 
 func _on_transition_timer_timeout() -> void:

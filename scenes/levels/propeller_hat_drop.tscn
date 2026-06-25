@@ -1,0 +1,71 @@
+[gd_scene format=3 uid="uid://dpkrxtu8re8bx"]
+
+[ext_resource type="Texture2D" uid="uid://djf66l8bkpka0" path="res://assets/sprites/propeller_pickup_sheet.png" id="1_47ivr"]
+[ext_resource type="Script" uid="uid://b730ehgfqjfem" path="res://scripts/levels/propeller_hat_drop.gd" id="1_k4h6h"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_meu1p"]
+size = Vector2(20, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k4h6h"]
+atlas = ExtResource("1_47ivr")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pqi1v"]
+atlas = ExtResource("1_47ivr")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7l0u7"]
+atlas = ExtResource("1_47ivr")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pck6i"]
+atlas = ExtResource("1_47ivr")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3gs0l"]
+atlas = ExtResource("1_47ivr")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xd2di"]
+atlas = ExtResource("1_47ivr")
+region = Rect2(80, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_68f7a"]
+animations = [{
+"frames": [{
+"duration": 0.4,
+"texture": SubResource("AtlasTexture_k4h6h")
+}, {
+"duration": 0.4,
+"texture": SubResource("AtlasTexture_pqi1v")
+}, {
+"duration": 0.4,
+"texture": SubResource("AtlasTexture_7l0u7")
+}, {
+"duration": 0.4,
+"texture": SubResource("AtlasTexture_pck6i")
+}, {
+"duration": 0.4,
+"texture": SubResource("AtlasTexture_3gs0l")
+}, {
+"duration": 0.4,
+"texture": SubResource("AtlasTexture_xd2di")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="PropellerPickup" type="Area2D" unique_id=1842500628]
+script = ExtResource("1_k4h6h")
+
+[node name="CollisionShape" type="CollisionShape2D" parent="." unique_id=671993911]
+position = Vector2(0, -1)
+shape = SubResource("RectangleShape2D_meu1p")
+
+[node name="Sprite" type="AnimatedSprite2D" parent="." unique_id=1902139591]
+sprite_frames = SubResource("SpriteFrames_68f7a")
+autoplay = "default"
+frame_progress = 0.07578605
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
