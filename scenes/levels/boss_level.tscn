@@ -363,6 +363,7 @@ position = Vector2(16, 128)
 wait_time = 5.0
 
 [node name="Player" parent="." unique_id=620708001 instance=ExtResource("3_c84m3")]
+visible = false
 position = Vector2(40, 126)
 
 [node name="Intro" type="Node2D" parent="." unique_id=822253206]
