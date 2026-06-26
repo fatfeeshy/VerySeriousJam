@@ -69,6 +69,8 @@ func _on_winzone_body_entered(body: CharacterBody2D) -> void:
 	red_timer.stop()
 	green_light()
 	won = true
+	globals.finishedSecretary = true
+	secretary.set_won(true)
 
 # --- REDZONES --- #
 

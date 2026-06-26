@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://coshr644qr1ix" path="res://assets/tilemap/foreground_tilemap_2.png" id="2_t3owr"]
 [ext_resource type="PackedScene" uid="uid://bv8fjvw6olbg3" path="res://scenes/game/player.tscn" id="3_c84m3"]
 [ext_resource type="Texture2D" uid="uid://ndifc7j8t4wv" path="res://icon.svg" id="4_c84m3"]
-[ext_resource type="Texture2D" uid="uid://b7hprait13lio" path="res://assets/temporary/temp_wheel.png" id="5_ncp0k"]
+[ext_resource type="Texture2D" uid="uid://bgl8chuj3sv54" path="res://assets/sprites/spin-wheel.png" id="7_bx5eq"]
 [ext_resource type="PackedScene" uid="uid://5e06i23o7ov4" path="res://scenes/npc/boss.tscn" id="7_meu1p"]
 [ext_resource type="AudioStream" uid="uid://cdl3g5f7dxoc7" path="res://assets/music/melodyayresgriffiths-trapped-in-a-carnival.mp3" id="8_a731b"]
 [ext_resource type="AudioStream" uid="uid://bs4riotjvc1tp" path="res://assets/sfx/item-get.mp3" id="10_nhjjj"]
@@ -386,7 +386,7 @@ rotates = false
 
 [node name="Wheel" type="Sprite2D" parent="Intro/Path2D/PathFollow2D" unique_id=1785424378]
 visible = false
-texture = ExtResource("5_ncp0k")
+texture = ExtResource("7_bx5eq")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Intro" unique_id=1489456188]
 libraries/ = SubResource("AnimationLibrary_bx5eq")

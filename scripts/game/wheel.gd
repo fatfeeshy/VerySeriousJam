@@ -4,26 +4,28 @@ extends Node2D
 @onready var display_message: Label = $DisplayMessage
 @onready var spin_prize_wheel_sfx: AudioStreamPlayer = $SpinPrizeWheelSfx
 
-# TODO instaed of end states use and change the level
-enum EndStates {
-	L1,
-	L2,
-	L3,
-	L4
-}
 
-const SECTION_ANGLES = {
-	EndStates.L1: 45.0,
-	EndStates.L2: 135.0,
-	EndStates.L3: 225.0,
-	EndStates.L4: 315.0
+var  SECTION_ANGLES = {
+	"accountant": 60.0,
+	"friend": 180.0,
+	"secretary": 300.0,
 }
 
 func spin():
+	if globals.finishedAccountant:
+		SECTION_ANGLES.erase("accountant")
+	if globals.finishedFriend:
+		SECTION_ANGLES.erase("friend")
+	if globals.finishedSecretary:
+		SECTION_ANGLES.erase("secretary")
+	print(SECTION_ANGLES)
+	if SECTION_ANGLES.is_empty():
+		print("??")
+		get_tree().change_scene_to_file("res://scenes/levels/boss_level.tscn")
+		return
 	display_message.text = ""
 	
-	var result = EndStates.values().pick_random()
-	
+	var result = SECTION_ANGLES.keys().pick_random()
 	var full_spins = randi_range(4, 8)
 	
 	var offset = randf_range(-20.0, 20.0)
@@ -46,14 +48,16 @@ func spin():
 	spin_prize_wheel_sfx.stop()
 	
 	match result:
-		EndStates.L1:
-			display_message.text = "Level 1!"
-		EndStates.L2:
-			display_message.text = "Level 2!"
-		EndStates.L3:
-			display_message.text = "Level 3!"
-		EndStates.L4:
-			display_message.text = "Level 4!"
+		"accountant":
+			display_message.text = "Level accountant!"
+			get_tree().change_scene_to_file("res://scenes/levels/accountant/accountant_level.tscn")
+		"friend":
+			display_message.text = "Level friend!"
+			get_tree().change_scene_to_file("res://scenes/levels/friend/friend_level.tscn")
+		"secretary":
+			display_message.text = "Level secretary!"
+			get_tree().change_scene_to_file("res://scenes/levels/secretary_level.tscn")
+		
 
 func _ready() -> void:
 	spin()

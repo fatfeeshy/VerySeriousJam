@@ -3,7 +3,9 @@ extends Area2D
 @onready var sprite: Sprite2D = $NPCSprite
 @onready var animation: AnimationPlayer = $AnimationPlayer
 @onready var label: Label = $Label
+@onready var level_complete: AudioStreamPlayer = $LevelComplete
 
+var won = false
 var friend_sprite := Rect2(0, 0, 16, 17)
 var secretary_sprite := Rect2(16, 0, 16, 17)
 var accountant_sprite := Rect2(32, 0, 16, 17)
@@ -21,6 +23,14 @@ func _ready() -> void:
 
 func _on_body_entered(body: CharacterBody2D) -> void:
 	animation.play("recruited")
+	
+	if (won):
+		await get_tree().create_timer(1).timeout
+		get_tree().change_scene_to_file("res://scenes/game/wheel.tscn")
+	
 
 func set_text(text):
 	label.text = text 
+	
+func set_won(didWin):
+	won = didWin

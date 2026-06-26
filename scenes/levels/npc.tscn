@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dkgu0yx1nv5cs" path="res://scripts/levels/npc.gd" id="1_ecmxt"]
 [ext_resource type="Texture2D" uid="uid://d0tons778uf6e" path="res://assets/sprites/allNPCS.png" id="1_h0kbb"]
+[ext_resource type="AudioStream" uid="uid://dn74g72gxuvcj" path="res://assets/sfx/level-complete.mp3" id="3_rsfg1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_m2g58"]
 size = Vector2(32, 24)
@@ -120,5 +121,8 @@ vertical_alignment = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1343284330]
 libraries/ = SubResource("AnimationLibrary_l40ub")
+
+[node name="LevelComplete" type="AudioStreamPlayer" parent="." unique_id=901602630]
+stream = ExtResource("3_rsfg1")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

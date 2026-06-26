@@ -17,9 +17,8 @@ config/icon="uid://dhs0khlrea13"
 
 [autoload]
 
-InteractionManager="*uid://boiikc684gvlk"
-DialogManager="*uid://b202jly0l8olk"
 DialogueManager="*uid://c3rodes2l3gxb"
+Globals="*uid://cctxlevo7b4jb"
 
 [display]
 
