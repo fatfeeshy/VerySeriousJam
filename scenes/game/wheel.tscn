@@ -19,6 +19,7 @@ position = Vector2(166.5, 83)
 texture = ExtResource("1_minkj")
 
 [node name="Ticker" type="Sprite2D" parent="." unique_id=1877928631]
+visible = false
 position = Vector2(166.5, 83)
 texture = ExtResource("2_xntae")
 
