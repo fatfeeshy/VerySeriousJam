@@ -2,6 +2,7 @@ extends Node2D
 
 @onready var wheel: Sprite2D = $Wheel
 @onready var display_message: Label = $DisplayMessage
+@onready var spin_prize_wheel_sfx: AudioStreamPlayer = $SpinPrizeWheelSfx
 
 # TODO instaed of end states use and change the level
 enum EndStates {
@@ -39,8 +40,10 @@ func spin():
 		target_rotation,
 		randf_range(2.5, 4.0)
 	)
-	
+	spin_prize_wheel_sfx.play()
 	await tween.finished
+	await get_tree().create_timer(.1).timeout
+	spin_prize_wheel_sfx.stop()
 	
 	match result:
 		EndStates.L1:

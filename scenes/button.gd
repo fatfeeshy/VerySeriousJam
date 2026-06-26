@@ -1,5 +1,5 @@
 extends Area2D
-@export var type = ""
+@export var type = "pushed"
 signal on_pressed
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 # Called when the node enters the scene tree for the first time.

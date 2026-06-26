@@ -15,7 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://ndifc7j8t4wv" path="res://icon.svg" id="14_0y3aj"]
 [ext_resource type="PackedScene" uid="uid://fcqc2qflldc2" path="res://scenes/levels/accountant/button_pass.tscn" id="14_jtxoh"]
 [ext_resource type="Script" uid="uid://cvs6kiok4ry5v" path="res://scenes/levels/accountant/laser_timed.gd" id="15_rdw1w"]
-[ext_resource type="Texture2D" uid="uid://bdjphdlmgleko" path="res://assets/temporary/temp_duck.png" id="16_jtxoh"]
+[ext_resource type="PackedScene" uid="uid://dhu44hf82vb5g" path="res://scenes/levels/npc.tscn" id="16_jtxoh"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ncs8m"]
 texture = ExtResource("2_jtxoh")
@@ -33,7 +33,7 @@ texture_region_size = Vector2i(8, 8)
 tile_size = Vector2i(8, 8)
 sources/0 = SubResource("TileSetAtlasSource_ncs8m")
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_f7csh"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jtxoh"]
 texture = ExtResource("3_n7h58")
 texture_region_size = Vector2i(8, 8)
 0:0/0 = 0
@@ -53,7 +53,7 @@ texture_region_size = Vector2i(8, 8)
 tile_size = Vector2i(8, 8)
 physics_layer_0/collision_layer = 16
 physics_layer_0/collision_mask = 0
-sources/0 = SubResource("TileSetAtlasSource_f7csh")
+sources/0 = SubResource("TileSetAtlasSource_jtxoh")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1x25e"]
 texture = ExtResource("5_6xt64")
@@ -435,8 +435,10 @@ position = Vector2(41, -138)
 position = Vector2(473, 6)
 
 [node name="Player" parent="." unique_id=620708001 groups=["player"] instance=ExtResource("12_mxjhl")]
+visible = false
 position = Vector2(46, -140)
 collision_layer = 3
+wind_force = 0.0
 
 [node name="platform2" parent="." unique_id=1272930133 instance=ExtResource("13_tyeoe")]
 position = Vector2(238, -42)
@@ -564,58 +566,56 @@ script = ExtResource("4_ravmw")
 [node name="Timer" type="Timer" parent="LaserTimed2" unique_id=1346191015]
 autostart = true
 
-[node name="LaserTimed" type="Node2D" parent="LaserTimed2" unique_id=634133774]
-position = Vector2(5.0000076, 1)
-scale = Vector2(1.0000001, 1)
+[node name="LaserTimed4" type="Node2D" parent="." unique_id=634133774]
+position = Vector2(285, 150)
+scale = Vector2(1.0000004, 1)
 script = ExtResource("15_rdw1w")
 
-[node name="Laser" type="TileMapLayer" parent="LaserTimed2/LaserTimed" unique_id=1015001022]
+[node name="Laser" type="TileMapLayer" parent="LaserTimed4" unique_id=1015001022]
 position = Vector2(63.99998, 0)
 tile_map_data = PackedByteArray("AAD//wAAAAADAAAAAAD//wEAAAAEAAAAAAD//wIAAAAEAAAAAAD//wMAAAAEAAAAAAD//wQAAAAEAAAAAAD//wYAAAAEAAAAAAD//wcAAAACAAAAAAD//wUAAAAEAAAAAAA=")
 tile_set = SubResource("TileSet_t5fa5")
 script = ExtResource("4_ravmw")
 
-[node name="Timer" type="Timer" parent="LaserTimed2/LaserTimed" unique_id=1852292625]
+[node name="Timer" type="Timer" parent="LaserTimed4" unique_id=1852292625]
 wait_time = 0.75
 autostart = true
 
-[node name="LaserTimed3" type="Node2D" parent="LaserTimed2" unique_id=669295801]
-position = Vector2(52.000008, 2)
-scale = Vector2(1.0000002, 1)
+[node name="LaserTimed5" type="Node2D" parent="." unique_id=669295801]
+position = Vector2(332.00003, 151)
+scale = Vector2(1.0000005, 1)
 script = ExtResource("15_rdw1w")
 delay = 0.2
 
-[node name="Laser" type="TileMapLayer" parent="LaserTimed2/LaserTimed3" unique_id=1016033199]
+[node name="Laser" type="TileMapLayer" parent="LaserTimed5" unique_id=1016033199]
 position = Vector2(-21.000023, -1)
 tile_map_data = PackedByteArray("AAD//wAAAAADAAAAAAD//wEAAAAEAAAAAAD//wIAAAAEAAAAAAD//wMAAAAEAAAAAAD//wQAAAAEAAAAAAD//wYAAAAEAAAAAAD//wcAAAACAAAAAAD//wUAAAAEAAAAAAA=")
 tile_set = SubResource("TileSet_t5fa5")
 script = ExtResource("4_ravmw")
 
-[node name="Timer" type="Timer" parent="LaserTimed2/LaserTimed3" unique_id=1246824670]
+[node name="Timer" type="Timer" parent="LaserTimed5" unique_id=1246824670]
 wait_time = 0.75
 autostart = true
 
-[node name="LaserTimed2" type="Node2D" parent="LaserTimed2" unique_id=928483007]
-position = Vector2(142, 0)
-scale = Vector2(1.0000002, 1)
+[node name="LaserTimed6" type="Node2D" parent="." unique_id=928483007]
+position = Vector2(422.00003, 149)
+scale = Vector2(1.0000005, 1)
 script = ExtResource("15_rdw1w")
 delay = 0.1
 
-[node name="Laser" type="TileMapLayer" parent="LaserTimed2/LaserTimed2" unique_id=1988195273]
+[node name="Laser" type="TileMapLayer" parent="LaserTimed6" unique_id=1988195273]
 position = Vector2(-35.000015, 2)
 tile_map_data = PackedByteArray("AAD//wAAAAADAAAAAAD//wEAAAAEAAAAAAD//wIAAAAEAAAAAAD//wMAAAAEAAAAAAD//wQAAAAEAAAAAAD//wYAAAAEAAAAAAD//wcAAAACAAAAAAD//wUAAAAEAAAAAAA=")
 tile_set = SubResource("TileSet_ravmw")
 script = ExtResource("4_ravmw")
 
-[node name="Timer" type="Timer" parent="LaserTimed2/LaserTimed2" unique_id=1119212412]
+[node name="Timer" type="Timer" parent="LaserTimed6" unique_id=1119212412]
 autostart = true
 
-[node name="TempDuck" type="Sprite2D" parent="LaserTimed2" unique_id=1755428655]
-position = Vector2(241.99997, 48)
-texture = ExtResource("16_jtxoh")
-flip_h = true
-
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=611421906]
+
+[node name="NPC" parent="." unique_id=2044188544 instance=ExtResource("16_jtxoh")]
+position = Vector2(511, 199)
 
 [connection signal="on_pressed" from="Button" to="Tiles/LaserOb1" method="_on_button_on_pressed"]
 [connection signal="on_pressed" from="Button2" to="Tiles/LaserOb2" method="_on_button_2_on_pressed"]
@@ -624,6 +624,6 @@ flip_h = true
 [connection signal="timeout" from="LaserTimed/Timer" to="LaserTimed" method="_on_timer_timeout"]
 [connection signal="timeout" from="LaserTimed3/Timer" to="LaserTimed3" method="_on_timer_timeout"]
 [connection signal="timeout" from="LaserTimed2/Timer" to="LaserTimed2" method="_on_timer_timeout"]
-[connection signal="timeout" from="LaserTimed2/LaserTimed/Timer" to="LaserTimed2/LaserTimed" method="_on_timer_timeout"]
-[connection signal="timeout" from="LaserTimed2/LaserTimed3/Timer" to="LaserTimed2/LaserTimed3" method="_on_timer_timeout"]
-[connection signal="timeout" from="LaserTimed2/LaserTimed2/Timer" to="LaserTimed2/LaserTimed2" method="_on_timer_timeout"]
+[connection signal="timeout" from="LaserTimed4/Timer" to="LaserTimed4" method="_on_timer_timeout"]
+[connection signal="timeout" from="LaserTimed5/Timer" to="LaserTimed5" method="_on_timer_timeout"]
+[connection signal="timeout" from="LaserTimed6/Timer" to="LaserTimed6" method="_on_timer_timeout"]

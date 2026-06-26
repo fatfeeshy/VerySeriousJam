@@ -2,9 +2,11 @@
 
 [ext_resource type="Script" uid="uid://bhlhxmo7k2wrc" path="res://scripts/player.gd" id="1_g2els"]
 [ext_resource type="Texture2D" uid="uid://g4koxu46ksak" path="res://assets/sprites/duck_spritesheet.png" id="2_u3rb4"]
-[ext_resource type="AudioStream" uid="uid://dthv500mf5ufd" path="res://assets/quack_5.mp3" id="3_u3rb4"]
+[ext_resource type="AudioStream" uid="uid://dthv500mf5ufd" path="res://assets/sfx/quack_5.mp3" id="3_u3rb4"]
 [ext_resource type="Texture2D" uid="uid://ep8oc7r0yimh" path="res://assets/tilemap/window_decor_tilemap.png" id="4_nybob"]
 [ext_resource type="Texture2D" uid="uid://cqvqpnyvr2gw1" path="res://assets/sprites/moolahspritesheet.png" id="5_68xwl"]
+[ext_resource type="AudioStream" uid="uid://cg7gb6w6ipnrv" path="res://assets/sfx/jump-sfx.wav" id="6_wwvfn"]
+[ext_resource type="AudioStream" uid="uid://bdmk6iy3axw3g" path="res://assets/sfx/deathbossSfx.wav" id="7_t8yk2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_t5fa5"]
 size = Vector2(16, 14)
@@ -636,5 +638,12 @@ amount = 200
 texture = ExtResource("5_68xwl")
 lifetime = 5.0
 process_material = SubResource("ParticleProcessMaterial_m2g58")
+
+[node name="JumpSfx" type="AudioStreamPlayer" parent="." unique_id=1743376438]
+stream = ExtResource("6_wwvfn")
+volume_db = -8.0
+
+[node name="Deathsfx" type="AudioStreamPlayer" parent="." unique_id=213277408]
+stream = ExtResource("7_t8yk2")
 
 [connection signal="body_shape_entered" from="Hurtbox" to="." method="_on_hurtbox_body_shape_entered"]

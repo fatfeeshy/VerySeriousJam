@@ -4,6 +4,8 @@
 [ext_resource type="Texture2D" uid="uid://lttpp2a132xa" path="res://assets/sprites/boss.png" id="1_u2vth"]
 [ext_resource type="Texture2D" uid="uid://bnjyj32c5ogqa" path="res://assets/sprites/boss_laser_indicator.png" id="2_kd55k"]
 [ext_resource type="Shader" uid="uid://cn05bjg5kubj8" path="res://shaders/hit_flash.gdshader" id="3_o26t5"]
+[ext_resource type="AudioStream" uid="uid://bry5n0n22ljfe" path="res://assets/sfx/beam-fire.mp3" id="5_yuu4j"]
+[ext_resource type="AudioStream" uid="uid://chaxnjojcq6f4" path="res://assets/sfx/boss_damage.mp3" id="6_oufk1"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kd55k"]
 atlas = ExtResource("2_kd55k")
@@ -337,6 +339,12 @@ wait_time = 2.5
 [node name="AttackDelay" type="Timer" parent="." unique_id=1437323828]
 wait_time = 3.0
 one_shot = true
+
+[node name="BeamFire" type="AudioStreamPlayer" parent="." unique_id=222124551]
+stream = ExtResource("5_yuu4j")
+
+[node name="BossDamage" type="AudioStreamPlayer" parent="." unique_id=688370195]
+stream = ExtResource("6_oufk1")
 
 [connection signal="body_entered" from="." to="." method="_on_boss_body_entered"]
 [connection signal="body_entered" from="Attacks/Laser" to="." method="_on_laser_body_entered"]

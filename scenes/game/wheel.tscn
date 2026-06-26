@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://c4xehukjiavmq" path="res://scripts/game/wheel.gd" id="1_xntae"]
 [ext_resource type="Texture2D" uid="uid://ep8oc7r0yimh" path="res://assets/tilemap/window_decor_tilemap.png" id="2_pwjbd"]
 [ext_resource type="Texture2D" uid="uid://bvvvnjgctcx5d" path="res://assets/temporary/temp_ticker.png" id="2_xntae"]
+[ext_resource type="AudioStream" uid="uid://bpxd7k50d4puu" path="res://assets/sfx/spin-prize-wheel-sfx.mp3" id="5_1mw02"]
 
 [node name="wheel" type="Node2D" unique_id=615941058]
 script = ExtResource("1_xntae")
@@ -19,10 +20,12 @@ position = Vector2(166.5, 83)
 texture = ExtResource("1_minkj")
 
 [node name="Ticker" type="Sprite2D" parent="." unique_id=1877928631]
-visible = false
 position = Vector2(166.5, 83)
 texture = ExtResource("2_xntae")
 
 [node name="DisplayMessage" type="Label" parent="." unique_id=1208552787]
 offset_right = 40.0
 offset_bottom = 23.0
+
+[node name="SpinPrizeWheelSfx" type="AudioStreamPlayer" parent="." unique_id=759931314]
+stream = ExtResource("5_1mw02")

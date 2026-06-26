@@ -5,6 +5,7 @@ extends Node2D
 @onready var boss: Area2D = $Boss
 @onready var propeller_drop_timer: Timer = $PropellerDropTimer
 @onready var propeller_path: PathFollow2D = $ItemDropPath/PathFollow2D
+@onready var item_get: AudioStreamPlayer = $ItemGet
 
 func _ready() -> void:
 	player.last_checkpoint = Vector2(40, 126)
@@ -36,6 +37,7 @@ func spawn_propeller_drop():
 func _on_propeller_drop_picked_up() -> void:
 	player.propeller_hat_jump_is_on = true
 	current_propeller = null
+	item_get.play()
 
 func _on_propeller_drop_timer_timeout() -> void:
 	spawn_propeller_drop()

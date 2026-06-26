@@ -5,6 +5,8 @@ extends Area2D
 @onready var attack_timer: Timer = $AttackTimer
 @onready var attack_delay: Timer = $AttackDelay
 @onready var hit_flash: AnimationPlayer = $HitFlash
+@onready var beam_fire: AudioStreamPlayer = $BeamFire
+@onready var boss_damage: AudioStreamPlayer = $BossDamage
 
 var default_pos := Vector2(160, 68)
 var health := 3
@@ -29,6 +31,7 @@ func attack_player():
 	tween.tween_property(self, "global_position:x", player.global_position.x, 0.3)
 	await tween.finished
 	animation.play("laser")
+	beam_fire.play()
 	await animation.animation_finished
 	animation.play("idle")
 
@@ -48,6 +51,7 @@ func take_damage():
 	if health == 0:
 		return
 	hit_flash.play("hit_flash")
+	boss_damage.play()
 	player.propeller_hat_jump_is_on = false
 	attack_delay.start()
 	health -= 1

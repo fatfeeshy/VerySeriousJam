@@ -11,9 +11,9 @@ config_version=5
 [application]
 
 config/name="VerySeriousJam"
-run/main_scene="uid://dpflbq45xcrcc"
+run/main_scene="uid://b3v4xb1jxa3p7"
 config/features=PackedStringArray("4.7", "GL Compatibility")
-config/icon="res://icon.svg"
+config/icon="uid://dhs0khlrea13"
 
 [autoload]
 

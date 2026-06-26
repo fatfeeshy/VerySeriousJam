@@ -22,6 +22,8 @@ var last_checkpoint : Vector2
 @onready var secretary_panel: Panel = $CanvasLayer/SecretaryPanel
 @onready var quack: AudioStreamPlayer = $Quack
 @onready var money_particles: GPUParticles2D = $MoneyParticles
+@onready var jump_sfx: AudioStreamPlayer = $JumpSfx
+@onready var deathsfx: AudioStreamPlayer = $Deathsfx
 
 
 var propeller_hat_jump_is_on : bool
@@ -52,6 +54,7 @@ func get_anim_name(state: String) -> String:
 
 	return state
 func _ready() -> void:
+	self.show()
 	death_transition.visible = false
 	# Sets camera limit for player or other necessary variables
 	match get_tree().current_scene.name:
@@ -95,6 +98,7 @@ func die():
 	dead = true
 	sprite.visible = false
 	death_sprite.visible = true
+	#deathsfx.play() #will be boss death i want a diff sfx
 	death_animation.play("spin")
 	death_transition_player.play("death_transition")
 	emit_signal("reset") # For accountant level
@@ -141,16 +145,19 @@ func Jumping():
 	# Regular Jumping
 	if Input.is_action_just_pressed("jump") and is_on_floor():
 		Jump()
+		jump_sfx.play()
 	
 	# Jump Buffer Logic
 	if Input.is_action_just_pressed("jump") and not is_on_floor()\
 											and not attempted_buffer:
 		jump_buffer.start()
+		jump_sfx.play()
 		attempted_buffer = true
 	if jump_buffer.is_stopped():
 		return
 	if is_on_floor():
 		Jump()
+		jump_sfx.play()
 	
 	# Coyote Time Logic
 	if not is_on_floor() and not jumped:
@@ -159,6 +166,7 @@ func Jumping():
 		return
 	if Input.is_action_just_pressed("jump"):
 		Jump()
+		jump_sfx.play()
 
 func Jump():
 	velocity.y = jump

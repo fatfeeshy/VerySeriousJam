@@ -7,6 +7,10 @@ extends Node2D
 @onready var red_timer: Timer = $RedTimer
 @onready var transition_timer: Timer = $TransitionTimer
 
+@onready var greenlight: AudioStreamPlayer = $Greenlight
+@onready var redlight: AudioStreamPlayer = $Redlight
+@onready var secretary: Area2D = $Secretary
+
 var red : bool
 var player_at_risk : bool
 var won : bool
@@ -16,6 +20,7 @@ func _ready():
 	player.last_checkpoint = checkpoint.global_position
 	player.secretary_panel.visible = true
 	green_light()
+	secretary.set_text("You crack me up!")
 
 func _process(_delta: float) -> void:
 	if not red:
@@ -43,6 +48,7 @@ func transition_light():
 func _on_transition_timer_timeout() -> void:
 	red_light()
 	red_timer.start()
+	redlight.play()
 
 func red_light():
 	red = true
@@ -54,6 +60,7 @@ func red_light():
 func _on_red_timer_timeout() -> void:
 	red = false
 	green_light()
+	greenlight.play()
 
 func _on_winzone_body_entered(body: CharacterBody2D) -> void:
 	if not body is CharacterBody2D:

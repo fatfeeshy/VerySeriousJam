@@ -7,6 +7,8 @@
 [ext_resource type="Texture2D" uid="uid://ndifc7j8t4wv" path="res://icon.svg" id="4_c84m3"]
 [ext_resource type="Texture2D" uid="uid://b7hprait13lio" path="res://assets/temporary/temp_wheel.png" id="5_ncp0k"]
 [ext_resource type="PackedScene" uid="uid://5e06i23o7ov4" path="res://scenes/npc/boss.tscn" id="7_meu1p"]
+[ext_resource type="AudioStream" uid="uid://cdl3g5f7dxoc7" path="res://assets/music/melodyayresgriffiths-trapped-in-a-carnival.mp3" id="8_a731b"]
+[ext_resource type="AudioStream" uid="uid://bs4riotjvc1tp" path="res://assets/sfx/item-get.mp3" id="10_nhjjj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_m2g58"]
 size = Vector2(18, 200)
@@ -389,6 +391,14 @@ texture = ExtResource("5_ncp0k")
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Intro" unique_id=1489456188]
 libraries/ = SubResource("AnimationLibrary_bx5eq")
 autoplay = &"intro"
+
+[node name="levelMusic" type="AudioStreamPlayer" parent="." unique_id=520553394]
+stream = ExtResource("8_a731b")
+volume_db = -25.668
+autoplay = true
+
+[node name="ItemGet" type="AudioStreamPlayer" parent="." unique_id=622914108]
+stream = ExtResource("10_nhjjj")
 
 [connection signal="timeout" from="PropellerDropTimer" to="." method="_on_propeller_drop_timer_timeout"]
 [connection signal="died" from="Player" to="." method="_on_player_died"]
