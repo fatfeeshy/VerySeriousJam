@@ -55,4 +55,4 @@ func take_damage():
 		die_sequence()
 
 func die_sequence():
-	pass
+	attack_timer.stop()
