@@ -259,7 +259,7 @@ tile_map_data = PackedByteArray("AAAnABYAAgADAAMAAAAnABUAAgADAAIAAAAmABYAAgACAAM
 tile_set = SubResource("TileSet_jhq8q")
 
 [node name="Player" parent="." unique_id=620708001 groups=["player"] instance=ExtResource("3_fdtkj")]
-position = Vector2(236, 153)
+position = Vector2(185, -953)
 collision_layer = 3
 
 [node name="zoneOne" type="Area2D" parent="." unique_id=1941866595]
@@ -289,7 +289,7 @@ shape = SubResource("RectangleShape2D_xhvbf")
 script = ExtResource("6_i5hcs")
 
 [node name="LeftWindBox" type="CollisionShape2D" parent="RightWind" unique_id=2067592876]
-position = Vector2(183, -744)
+position = Vector2(182, -744.25)
 shape = SubResource("RectangleShape2D_i5hcs")
 
 [node name="LeftWind2" type="Area2D" parent="." unique_id=291165507]
@@ -335,12 +335,8 @@ wind_force = -50.0
 position = Vector2(181, -633)
 shape = SubResource("RectangleShape2D_8hvsd")
 
-
 [node name="NPC" parent="." unique_id=2044188544 instance=ExtResource("7_tmoxf")]
 position = Vector2(44, -1448)
-
-[node name="Checkpoints" type="Node2D" parent="." unique_id=305140512]
-
 
 [connection signal="body_entered" from="zoneOne" to="zoneOne" method="_on_body_entered"]
 [connection signal="body_exited" from="zoneOne" to="zoneOne" method="_on_body_exited"]
