@@ -5,13 +5,14 @@
 [ext_resource type="Texture2D" uid="uid://d242fdjdmxwim" path="res://assets/tilemap/foreground_floor_tiles.png" id="2_xhvbf"]
 [ext_resource type="PackedScene" uid="uid://bv8fjvw6olbg3" path="res://scenes/game/player.tscn" id="3_fdtkj"]
 [ext_resource type="Script" uid="uid://byuxuxsu5oeg0" path="res://scenes/levels/friend/left_wind.gd" id="5_fdtkj"]
+[ext_resource type="Texture2D" uid="uid://0ax135ufmwre" path="res://assets/sprites/temp_wiond.png" id="5_gkh5q"]
 [ext_resource type="Script" uid="uid://diryd5bmuffrc" path="res://scenes/levels/friend/zone_one.gd" id="5_i5hcs"]
 [ext_resource type="Script" uid="uid://cekmos31viaad" path="res://scenes/levels/friend/right_wind.gd" id="6_i5hcs"]
 [ext_resource type="PackedScene" uid="uid://dhu44hf82vb5g" path="res://scenes/levels/npc.tscn" id="7_tmoxf"]
 [ext_resource type="PackedScene" uid="uid://drg2u5010u810" path="res://scenes/levels/checkpoint.tscn" id="8_djdwa"]
 [ext_resource type="Texture2D" uid="uid://3csmolr44sv2" path="res://assets/lasers.png" id="9_okl10"]
 [ext_resource type="Script" uid="uid://bve5ghs8r0ydg" path="res://scenes/levels/friend/laser_ob_1.gd" id="10_okl10"]
-[ext_resource type="PackedScene" uid="uid://dhks172whcaie" path="res://scenes/button.tscn" id="11_gkh5q"]
+[ext_resource type="PackedScene" uid="uid://d35rmqohqeqkg" path="res://scenes/button.tscn" id="11_gkh5q"]
 [ext_resource type="Script" uid="uid://ubkawp2p4bqm" path="res://scenes/levels/friend/laser_ob_2.gd" id="12_t5rdt"]
 [ext_resource type="Script" uid="uid://devxrekhu14n8" path="res://scenes/levels/friend/laser_ob_3.gd" id="13_t5rdt"]
 
@@ -243,8 +244,10 @@ sources/2 = SubResource("TileSetAtlasSource_u7woq")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_48002"]
 emission_shape = 3
-emission_box_extents = Vector3(130, 600, 1)
-gravity = Vector3(0, -20, 0)
+emission_box_extents = Vector3(200, 415, 1)
+angle_min = 1.0728835e-05
+angle_max = 1.0728835e-05
+gravity = Vector3(0, -100, 0)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_t5fa5"]
 size = Vector2(248, 1196)
@@ -252,14 +255,50 @@ size = Vector2(248, 1196)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xhvbf"]
 size = Vector2(228, 132.1875)
 
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_gkh5q"]
+particle_flag_disable_z = true
+emission_shape_offset = Vector3(150, 200, 0)
+emission_shape = 3
+emission_box_extents = Vector3(100, 70, 1)
+angle_min = -89.99999
+angle_max = -89.99999
+gravity = Vector3(-100, 0, 0)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i5hcs"]
 size = Vector2(228, 90.5)
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_7tdsr"]
+particle_flag_disable_z = true
+emission_shape_offset = Vector3(100, 200, 0)
+emission_shape = 3
+emission_box_extents = Vector3(100, 55, 1)
+angle_min = -89.99999
+angle_max = -89.99999
+gravity = Vector3(100, 0, 0)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_u7woq"]
 size = Vector2(228, 80)
 
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_yh00n"]
+particle_flag_disable_z = true
+emission_shape_offset = Vector3(150, 200, 0)
+emission_shape = 3
+emission_box_extents = Vector3(100, 55, 1)
+angle_min = -89.99999
+angle_max = -89.99999
+gravity = Vector3(-100, 0, 0)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5i3y1"]
 size = Vector2(228, 150.375)
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_emody"]
+particle_flag_disable_z = true
+emission_shape_offset = Vector3(100, 200, 0)
+emission_shape = 3
+emission_box_extents = Vector3(100, 70, 1)
+angle_min = -89.99999
+angle_max = -89.99999
+gravity = Vector3(100, 0, 0)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8hvsd"]
 size = Vector2(228, 155.375)
@@ -308,11 +347,13 @@ position = Vector2(-16, 103)
 position = Vector2(17, -103)
 script = ExtResource("5_i5hcs")
 
-[node name="GPUParticles2D" type="GPUParticles2D" parent="Winds/UpWind" unique_id=728452722]
+[node name="Up" type="GPUParticles2D" parent="Winds/UpWind" unique_id=728452722]
 z_index = 5
-position = Vector2(195, -435)
-amount = 500
+position = Vector2(193, -27)
+amount = 450
+texture = ExtResource("5_gkh5q")
 lifetime = 2.0
+visibility_rect = Rect2(-100, -800, 200, 1000)
 process_material = SubResource("ParticleProcessMaterial_48002")
 
 [node name="HighJumpBox" type="CollisionShape2D" parent="Winds/UpWind" unique_id=448828684]
@@ -320,7 +361,6 @@ position = Vector2(188, -429)
 shape = SubResource("RectangleShape2D_t5fa5")
 
 [node name="LeftWind" type="Area2D" parent="Winds" unique_id=186440366]
-visible = false
 position = Vector2(16, -103)
 script = ExtResource("5_fdtkj")
 
@@ -328,8 +368,16 @@ script = ExtResource("5_fdtkj")
 position = Vector2(182, -629.90625)
 shape = SubResource("RectangleShape2D_xhvbf")
 
+[node name="Left" type="GPUParticles2D" parent="Winds/LeftWind" unique_id=94864002]
+z_index = 5
+position = Vector2(45, -835)
+amount = 150
+texture = ExtResource("5_gkh5q")
+lifetime = 2.0
+visibility_rect = Rect2(0, 0, 300, 500)
+process_material = SubResource("ParticleProcessMaterial_gkh5q")
+
 [node name="RightWind" type="Area2D" parent="Winds" unique_id=1361092739]
-visible = false
 position = Vector2(16, -103)
 script = ExtResource("6_i5hcs")
 
@@ -337,8 +385,16 @@ script = ExtResource("6_i5hcs")
 position = Vector2(183, -744)
 shape = SubResource("RectangleShape2D_i5hcs")
 
+[node name="Left" type="GPUParticles2D" parent="Winds/RightWind" unique_id=39833773]
+z_index = 5
+position = Vector2(69, -942)
+amount = 150
+texture = ExtResource("5_gkh5q")
+lifetime = 2.0
+visibility_rect = Rect2(0, 0, 300, 500)
+process_material = SubResource("ParticleProcessMaterial_7tdsr")
+
 [node name="LeftWind2" type="Area2D" parent="Winds" unique_id=291165507]
-visible = false
 position = Vector2(18, -335)
 script = ExtResource("5_fdtkj")
 
@@ -346,8 +402,16 @@ script = ExtResource("5_fdtkj")
 position = Vector2(182, -604)
 shape = SubResource("RectangleShape2D_u7woq")
 
+[node name="Left" type="GPUParticles2D" parent="Winds/LeftWind2" unique_id=1967478973]
+z_index = 5
+position = Vector2(58, -796)
+amount = 150
+texture = ExtResource("5_gkh5q")
+lifetime = 2.0
+visibility_rect = Rect2(0, 0, 300, 500)
+process_material = SubResource("ParticleProcessMaterial_yh00n")
+
 [node name="RightWind2" type="Area2D" parent="Winds" unique_id=51295141]
-visible = false
 position = Vector2(18, -335)
 script = ExtResource("6_i5hcs")
 
@@ -355,8 +419,16 @@ script = ExtResource("6_i5hcs")
 position = Vector2(184, -719.8125)
 shape = SubResource("RectangleShape2D_5i3y1")
 
+[node name="Left" type="GPUParticles2D" parent="Winds/RightWind2" unique_id=1803144479]
+z_index = 5
+position = Vector2(65, -925)
+amount = 150
+texture = ExtResource("5_gkh5q")
+lifetime = 2.0
+visibility_rect = Rect2(0, 0, 200, 500)
+process_material = SubResource("ParticleProcessMaterial_emody")
+
 [node name="LeftWind3" type="Area2D" parent="Winds" unique_id=288136856]
-visible = false
 position = Vector2(22, -570)
 script = ExtResource("5_fdtkj")
 wind_force = -50.0
@@ -384,9 +456,7 @@ position = Vector2(181, -633)
 shape = SubResource("RectangleShape2D_8hvsd")
 
 [node name="Player" parent="." unique_id=620708001 groups=["player"] instance=ExtResource("3_fdtkj")]
-visible = false
-position = Vector2(135, -29)
-collision_layer = 3
+position = Vector2(119, 158)
 
 [node name="NPC" parent="." unique_id=2044188544 instance=ExtResource("7_tmoxf")]
 position = Vector2(44, -1448)
