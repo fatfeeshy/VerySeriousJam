@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://byuxuxsu5oeg0" path="res://scenes/levels/friend/left_wind.gd" id="5_fdtkj"]
 [ext_resource type="Script" uid="uid://diryd5bmuffrc" path="res://scenes/levels/friend/zone_one.gd" id="5_i5hcs"]
 [ext_resource type="Script" uid="uid://cekmos31viaad" path="res://scenes/levels/friend/right_wind.gd" id="6_i5hcs"]
+[ext_resource type="PackedScene" uid="uid://dhu44hf82vb5g" path="res://scenes/levels/npc.tscn" id="7_tmoxf"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_i5hcs"]
 texture = ExtResource("1_85cmx")
@@ -333,6 +334,9 @@ wind_force = -50.0
 [node name="LeftWindBox" type="CollisionShape2D" parent="LeftWind4" unique_id=1844242480]
 position = Vector2(181, -633)
 shape = SubResource("RectangleShape2D_8hvsd")
+
+[node name="NPC" parent="." unique_id=2044188544 instance=ExtResource("7_tmoxf")]
+position = Vector2(44, -1448)
 
 [connection signal="body_entered" from="zoneOne" to="zoneOne" method="_on_body_entered"]
 [connection signal="body_exited" from="zoneOne" to="zoneOne" method="_on_body_exited"]

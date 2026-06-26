@@ -2,10 +2,17 @@
 
 [ext_resource type="Texture2D" uid="uid://b7hprait13lio" path="res://assets/temporary/temp_wheel.png" id="1_minkj"]
 [ext_resource type="Script" uid="uid://c4xehukjiavmq" path="res://scripts/game/wheel.gd" id="1_xntae"]
+[ext_resource type="Texture2D" uid="uid://ep8oc7r0yimh" path="res://assets/tilemap/window_decor_tilemap.png" id="2_pwjbd"]
 [ext_resource type="Texture2D" uid="uid://bvvvnjgctcx5d" path="res://assets/temporary/temp_ticker.png" id="2_xntae"]
 
 [node name="wheel" type="Node2D" unique_id=615941058]
 script = ExtResource("1_xntae")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1204796145]
+self_modulate = Color(0, 0, 0, 1)
+position = Vector2(158, 90.5)
+scale = Vector2(10.875, 8.541667)
+texture = ExtResource("2_pwjbd")
 
 [node name="Wheel" type="Sprite2D" parent="." unique_id=1990268338]
 position = Vector2(166.5, 83)

@@ -21,6 +21,8 @@ var last_checkpoint : Vector2
 @onready var death_transition_player: AnimationPlayer = $DeathTransition/DeathTransitionPlayer
 @onready var secretary_panel: Panel = $CanvasLayer/SecretaryPanel
 @onready var quack: AudioStreamPlayer = $Quack
+@onready var money_particles: GPUParticles2D = $MoneyParticles
+
 
 var propeller_hat_jump_is_on : bool
 var propeller_hat_jump := -180
@@ -58,6 +60,12 @@ func _ready() -> void:
 			camera.limit_right = 688
 			camera.limit_left = 0
 			camera.limit_top = -312
+		"accountantLevel":
+			money_particles.emitting = true
+			camera.limit_bottom = 226
+			camera.limit_right = 560
+			camera.limit_left = 0
+			camera.limit_top = -220
 		"FriendLevel":
 			camera.limit_bottom = 185
 			camera.limit_right = 320

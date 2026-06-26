@@ -1,6 +1,6 @@
 [gd_scene format=4 uid="uid://dpflbq45xcrcc"]
 
-[ext_resource type="Script" uid="uid://ba3cc5561r7uh" path="res://scenes/levels/accountant/accountant_level.gd" id="1_rdw1w"]
+[ext_resource type="Script" uid="uid://ba3cc5561r7uh" path="res://scenes/levels/accountant_level.gd" id="1_rdw1w"]
 [ext_resource type="Texture2D" uid="uid://bqfsd8g68x1ud" path="res://assets/windows.png" id="2_jtxoh"]
 [ext_resource type="Texture2D" uid="uid://3csmolr44sv2" path="res://assets/lasers.png" id="3_n7h58"]
 [ext_resource type="Script" uid="uid://rh7ngeuk14lp" path="res://scripts/levels/laser_ob_1.gd" id="4_ravmw"]
@@ -15,6 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://rjaq1x7pwexb" path="res://scenes/platform.tscn" id="13_tyeoe"]
 [ext_resource type="Texture2D" uid="uid://ndifc7j8t4wv" path="res://icon.svg" id="14_0y3aj"]
 [ext_resource type="Script" uid="uid://damcg7thfrqol" path="res://scenes/levels/la_ser.gd" id="15_rdw1w"]
+[ext_resource type="PackedScene" uid="uid://dhu44hf82vb5g" path="res://scenes/levels/npc.tscn" id="16_jtxoh"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ncs8m"]
 texture = ExtResource("2_jtxoh")
@@ -478,6 +479,9 @@ script = ExtResource("15_rdw1w")
 tile_map_data = PackedByteArray("AAD//wAAAAADAAAAAAD//wEAAAAEAAAAAAD//wIAAAAEAAAAAAD//wMAAAAEAAAAAAD//wQAAAAEAAAAAAD//wYAAAAEAAAAAAD//wcAAAACAAAAAAD//wUAAAAEAAAAAAA=")
 tile_set = SubResource("TileSet_t5fa5")
 script = ExtResource("4_ravmw")
+
+[node name="NPC" parent="." unique_id=2044188544 instance=ExtResource("16_jtxoh")]
+position = Vector2(487, 200)
 
 [connection signal="area_entered" from="ButtonOb2" to="ButtonOb2" method="_on_area_entered"]
 [connection signal="area_entered" from="ButtonOb1" to="ButtonOb1" method="_on_area_entered"]
