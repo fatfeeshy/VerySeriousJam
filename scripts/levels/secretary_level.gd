@@ -42,13 +42,13 @@ func _on_green_timer_timeout() -> void:
 	transition_light()
 
 func transition_light():
+	redlight.play()
 	player.update_border_color("red")
 	transition_timer.start()
 
 func _on_transition_timer_timeout() -> void:
 	red_light()
 	red_timer.start()
-	redlight.play()
 
 func red_light():
 	red = true
@@ -58,9 +58,9 @@ func red_light():
 		player.die()
 
 func _on_red_timer_timeout() -> void:
+	greenlight.play()
 	red = false
 	green_light()
-	greenlight.play()
 
 func _on_winzone_body_entered(body: CharacterBody2D) -> void:
 	if not body is CharacterBody2D:

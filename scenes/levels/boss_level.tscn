@@ -5,6 +5,11 @@
 [ext_resource type="Texture2D" uid="uid://coshr644qr1ix" path="res://assets/tilemap/foreground_tilemap_2.png" id="2_t3owr"]
 [ext_resource type="PackedScene" uid="uid://bv8fjvw6olbg3" path="res://scenes/game/player.tscn" id="3_c84m3"]
 [ext_resource type="Texture2D" uid="uid://ndifc7j8t4wv" path="res://icon.svg" id="4_c84m3"]
+[ext_resource type="Texture2D" uid="uid://ct4wfuoox28a" path="res://assets/sprites/friend.png" id="5_7cnqo"]
+[ext_resource type="Texture2D" uid="uid://c3s03b5fkky62" path="res://assets/sprites/press_spacebar_sheet.png" id="5_a731b"]
+[ext_resource type="Texture2D" uid="uid://b34kkfseqn3t6" path="res://assets/sprites/NPCWheel.png" id="6_bx5eq"]
+[ext_resource type="Texture2D" uid="uid://plli40k6w3dp" path="res://assets/sprites/accountant.png" id="6_lcxvq"]
+[ext_resource type="Texture2D" uid="uid://cq7tkobfdxxqf" path="res://assets/sprites/secretary.png" id="7_3ijvu"]
 [ext_resource type="Texture2D" uid="uid://bgl8chuj3sv54" path="res://assets/sprites/spin-wheel.png" id="7_bx5eq"]
 [ext_resource type="PackedScene" uid="uid://5e06i23o7ov4" path="res://scenes/npc/boss.tscn" id="7_meu1p"]
 [ext_resource type="AudioStream" uid="uid://cdl3g5f7dxoc7" path="res://assets/music/melodyayresgriffiths-trapped-in-a-carnival.mp3" id="8_a731b"]
@@ -163,6 +168,308 @@ terrain_set_0/mode = 0
 terrain_set_0/terrain_0/name = "Walls"
 terrain_set_0/terrain_0/color = Color(0.5, 0.34375, 0.25, 1)
 sources/1 = SubResource("TileSetAtlasSource_meu1p")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sq8v1"]
+size = Vector2(8, 51.871117)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bx5eq"]
+atlas = ExtResource("5_a731b")
+region = Rect2(0, 0, 36, 28)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nhjjj"]
+atlas = ExtResource("5_a731b")
+region = Rect2(36, 0, 36, 28)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6y13f"]
+atlas = ExtResource("5_a731b")
+region = Rect2(72, 0, 36, 28)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7cnqo"]
+atlas = ExtResource("5_a731b")
+region = Rect2(108, 0, 36, 28)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lcxvq"]
+atlas = ExtResource("5_a731b")
+region = Rect2(144, 0, 36, 28)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3ijvu"]
+atlas = ExtResource("5_a731b")
+region = Rect2(180, 0, 36, 28)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v3d3m"]
+atlas = ExtResource("5_a731b")
+region = Rect2(216, 0, 36, 28)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vpa1g"]
+atlas = ExtResource("5_a731b")
+region = Rect2(252, 0, 36, 28)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_meu1p"]
+animations = [{
+"frames": [{
+"duration": 0.2,
+"texture": SubResource("AtlasTexture_bx5eq")
+}, {
+"duration": 0.2,
+"texture": SubResource("AtlasTexture_nhjjj")
+}, {
+"duration": 0.2,
+"texture": SubResource("AtlasTexture_6y13f")
+}, {
+"duration": 0.2,
+"texture": SubResource("AtlasTexture_7cnqo")
+}, {
+"duration": 0.2,
+"texture": SubResource("AtlasTexture_lcxvq")
+}, {
+"duration": 0.2,
+"texture": SubResource("AtlasTexture_3ijvu")
+}, {
+"duration": 0.2,
+"texture": SubResource("AtlasTexture_v3d3m")
+}, {
+"duration": 0.2,
+"texture": SubResource("AtlasTexture_vpa1g")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="Animation" id="Animation_7cnqo"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Node2D/Friend:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Node2D/Accountant:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Node2D/Secretary:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_6y13f"]
+resource_name = "npc_spin"
+length = 10.0
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("NPCWheel:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 7, 7.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("NPCWheel:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1.5, 5),
+"transitions": PackedFloat32Array(2, 2),
+"update": 0,
+"values": [0.0, 175.9291886010284]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("NPCWheel:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(3, 4, 6.5, 7.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(32, 80), Vector2(128, 40), Vector2(128, 40), Vector2(128, 112)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../Boss:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(5, 6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(160, 68), Vector2(352, -23.999992)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../Boss:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(5, 6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 43.633232]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Node2D/Secretary:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(7.5),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(144, 127.5)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Node2D/Accountant:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(7.5),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(128, 128.5)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Node2D/Friend:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(7.5),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(112, 127.5)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Node2D/Secretary:visible")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 7.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Node2D/Accountant:visible")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0, 7.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Node2D/Friend:visible")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0, 7.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("../Player:visible")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0, 4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("../Player:scale")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-1, 1)]
+}
+tracks/13/type = "method"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("..")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(3.9, 4),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"npc_spin_stop_boss_attack"
+}, {
+"args": [],
+"method": &"npc_spin_player_play_idle"
+}]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("../Player:position")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(160, 128)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7cnqo"]
+_data = {
+&"RESET": SubResource("Animation_7cnqo"),
+&"npc_spin": SubResource("Animation_6y13f")
+}
 
 [sub_resource type="Curve2D" id="Curve2D_meu1p"]
 _data = {
@@ -355,6 +662,65 @@ tile_set = SubResource("TileSet_m2g58")
 [node name="Boss" parent="." unique_id=203118943 instance=ExtResource("7_meu1p")]
 position = Vector2(160, 68)
 
+[node name="DeathSequence" type="Node2D" parent="." unique_id=1289825846]
+
+[node name="Node2D" type="Node2D" parent="DeathSequence" unique_id=1210615702]
+
+[node name="Friend" type="Sprite2D" parent="DeathSequence/Node2D" unique_id=1866611884]
+visible = false
+position = Vector2(112, 127.5)
+texture = ExtResource("5_7cnqo")
+
+[node name="Accountant" type="Sprite2D" parent="DeathSequence/Node2D" unique_id=389313914]
+visible = false
+position = Vector2(128, 128.5)
+texture = ExtResource("6_lcxvq")
+
+[node name="Secretary" type="Sprite2D" parent="DeathSequence/Node2D" unique_id=1855115887]
+visible = false
+position = Vector2(144, 127.5)
+texture = ExtResource("7_3ijvu")
+
+[node name="PlayerChecker" type="Area2D" parent="DeathSequence" unique_id=2793002]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DeathSequence/PlayerChecker" unique_id=607648348]
+position = Vector2(160, 104)
+scale = Vector2(-0.40363845, -1.1411064)
+shape = SubResource("RectangleShape2D_sq8v1")
+
+[node name="SpacebarPrompt" type="AnimatedSprite2D" parent="DeathSequence" unique_id=216343191]
+visible = false
+position = Vector2(224, 112)
+sprite_frames = SubResource("SpriteFrames_meu1p")
+autoplay = "default"
+frame_progress = 0.12885132
+
+[node name="SpinToWin" type="Label" parent="DeathSequence" unique_id=2107266093]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 168.0
+offset_top = 80.0
+offset_right = 285.0
+offset_bottom = 103.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 10
+text = "SPIN TO WIN!!!!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="NPCWheel" type="Sprite2D" parent="DeathSequence" unique_id=1089618812]
+self_modulate = Color(1, 1, 1, 0)
+position = Vector2(32, 80)
+texture = ExtResource("6_bx5eq")
+
+[node name="NPCSpin" type="AnimationPlayer" parent="DeathSequence" unique_id=705664084]
+libraries/ = SubResource("AnimationLibrary_7cnqo")
+
 [node name="ItemDropPath" type="Path2D" parent="." unique_id=119254715]
 curve = SubResource("Curve2D_meu1p")
 
@@ -365,10 +731,10 @@ position = Vector2(16, 128)
 wait_time = 5.0
 
 [node name="Player" parent="." unique_id=620708001 instance=ExtResource("3_c84m3")]
-visible = false
-position = Vector2(40, 126)
+position = Vector2(160, 128)
 
 [node name="Intro" type="Node2D" parent="." unique_id=822253206]
+z_index = 5
 
 [node name="BG" type="Sprite2D" parent="Intro" unique_id=913731565]
 visible = false
@@ -400,5 +766,6 @@ autoplay = true
 [node name="ItemGet" type="AudioStreamPlayer" parent="." unique_id=622914108]
 stream = ExtResource("10_nhjjj")
 
+[connection signal="death_sequence" from="Boss" to="." method="_on_boss_death_sequence"]
 [connection signal="timeout" from="PropellerDropTimer" to="." method="_on_propeller_drop_timer_timeout"]
 [connection signal="died" from="Player" to="." method="_on_player_died"]

@@ -8,7 +8,7 @@
 [ext_resource type="Script" uid="uid://bbldstuu7akj8" path="res://scenes/levels/accountant/laser_ob_2.gd" id="5_rdw1w"]
 [ext_resource type="Texture2D" uid="uid://d242fdjdmxwim" path="res://assets/tilemap/foreground_floor_tiles.png" id="6_l1es5"]
 [ext_resource type="Texture2D" uid="uid://wmki6oq7mki7" path="res://assets/tilemap/foreground_tilemap.png" id="7_7gejy"]
-[ext_resource type="PackedScene" uid="uid://dhks172whcaie" path="res://scenes/button.tscn" id="10_jtxoh"]
+[ext_resource type="PackedScene" uid="uid://d35rmqohqeqkg" path="res://scenes/button.tscn" id="10_jtxoh"]
 [ext_resource type="PackedScene" uid="uid://drg2u5010u810" path="res://scenes/levels/checkpoint.tscn" id="11_18upx"]
 [ext_resource type="PackedScene" uid="uid://bv8fjvw6olbg3" path="res://scenes/game/player.tscn" id="12_mxjhl"]
 [ext_resource type="PackedScene" uid="uid://rjaq1x7pwexb" path="res://scenes/platform.tscn" id="13_tyeoe"]
@@ -437,7 +437,6 @@ position = Vector2(473, 6)
 [node name="Player" parent="." unique_id=620708001 groups=["player"] instance=ExtResource("12_mxjhl")]
 visible = false
 position = Vector2(46, -140)
-collision_layer = 3
 wind_force = 0.0
 
 [node name="platform2" parent="." unique_id=1272930133 instance=ExtResource("13_tyeoe")]

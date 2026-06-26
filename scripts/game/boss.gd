@@ -1,4 +1,5 @@
 extends Area2D
+signal death_sequence
 
 @onready var animation: AnimationPlayer = $AnimationPlayer
 @onready var player: CharacterBody2D = $"../Player"
@@ -7,7 +8,7 @@ extends Area2D
 @onready var hit_flash: AnimationPlayer = $HitFlash
 @onready var beam_fire: AudioStreamPlayer = $BeamFire
 @onready var boss_damage: AudioStreamPlayer = $BossDamage
-
+var died
 var default_pos := Vector2(160, 68)
 var health := 3
 
@@ -27,6 +28,8 @@ func _on_attack_timer_timeout() -> void:
 	attack_player()
 
 func attack_player():
+	if died:
+		return
 	var tween := get_tree().create_tween()
 	tween.tween_property(self, "global_position:x", player.global_position.x, 0.3)
 	await tween.finished
@@ -56,7 +59,13 @@ func take_damage():
 	attack_delay.start()
 	health -= 1
 	if health == 0:
-		die_sequence()
+		died = true
+		emit_signal("death_sequence")
 
-func die_sequence():
-	attack_timer.stop()
+# --- DEATH SEQUENCE --- #
+
+func constant_attack():
+	animation.play("constant_attack")
+
+func stop_attack():
+	animation.play("idle")

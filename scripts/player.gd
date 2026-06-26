@@ -8,6 +8,7 @@ var gravity := 4
 var acceleration := 19
 var facing : int
 var dead : bool
+var boss_dead : bool
 var last_checkpoint : Vector2
 
 @onready var jump_buffer: Timer = $JumpBuffer
@@ -76,6 +77,8 @@ func _ready() -> void:
 			camera.limit_top = -1540
 
 func _physics_process(_delta: float) -> void:
+	if boss_dead:
+		return
 	update_jump_settings()
 	if dead:
 		check_path_progress()
@@ -208,6 +211,9 @@ func update_border_color(border_clr: String):
 			border.border_color = green_color
 		"red":
 			border.border_color = red_color
+
+func play_idle():
+	sprite.play("silly_idle")
 
 # --- OTHER --- #
 
