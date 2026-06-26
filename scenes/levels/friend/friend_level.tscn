@@ -242,7 +242,6 @@ sources/1 = SubResource("TileSetAtlasSource_i5hcs")
 sources/2 = SubResource("TileSetAtlasSource_u7woq")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_48002"]
-particle_flag_disable_z = true
 emission_shape = 3
 emission_box_extents = Vector3(130, 600, 1)
 gravity = Vector3(0, -20, 0)
@@ -310,6 +309,7 @@ position = Vector2(17, -103)
 script = ExtResource("5_i5hcs")
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="Winds/UpWind" unique_id=728452722]
+z_index = 5
 position = Vector2(195, -435)
 amount = 500
 lifetime = 2.0
@@ -387,7 +387,6 @@ shape = SubResource("RectangleShape2D_8hvsd")
 visible = false
 position = Vector2(135, -29)
 collision_layer = 3
-wind_force = 0.0
 
 [node name="NPC" parent="." unique_id=2044188544 instance=ExtResource("7_tmoxf")]
 position = Vector2(44, -1448)

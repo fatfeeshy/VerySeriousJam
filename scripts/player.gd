@@ -64,7 +64,7 @@ func _ready() -> void:
 			camera.limit_left = 0
 			camera.limit_top = -312
 		"accountantLevel":
-			money_particles.emitting = true
+			set_money_emit(true)
 			camera.limit_bottom = 226
 			camera.limit_right = 560
 			camera.limit_left = 0
@@ -231,3 +231,9 @@ func Animations():
 
 	if sprite.animation != anim_name:
 		sprite.play(anim_name)
+
+func set_money_emit(emitting):
+	if emitting:
+		money_particles.emitting = true
+	else:
+		money_particles.emitting = false
