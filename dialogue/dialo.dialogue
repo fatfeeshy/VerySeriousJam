@@ -1,0 +1,21 @@
+~ start
+Accountant Frank: [[Hi|Hello|Howdy]], what are you here for?
+Silly Billy: I'm here to recruit you to be more silly!
+=>< snippet
+ Accountant Frank: Here are some choices.
+- First one
+	Accountant Frank: You picked the first one.
+- Second one
+	Accountant Frank: You picked the second one.
+- Start again => start
+- End the conversation => END
+Accountant Frank: For more information see the online documentation.
+=> END	
+# pasue : [wait=1] (one sec wait) 
+#[wave]blah[/wave]
+#[speed=.2] changes speed
+
+~ snippet
+Silly Billy: Hi!!! 
+Silly Billy: I like cheeseits
+=> END
