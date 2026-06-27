@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://dqgpolag3xaak"]
+
+[ext_resource type="PackedScene" uid="uid://p2wcdumi1qj6" path="res://scenes/cutscene.tscn" id="1_27r8o"]
+[ext_resource type="Script" uid="uid://11hce8wha31l" path="res://scenes/game/outro.gd" id="2_i4nlu"]
+[ext_resource type="Texture2D" uid="uid://bhxvlbwb6olin" path="res://assets/cutscene/intro_outro/outro1.png" id="2_tjgsd"]
+[ext_resource type="AudioStream" uid="uid://dsk5farymmnnh" path="res://assets/cutscene/intro_outro/openmindaudio-outro-music.mp3" id="3_i4nlu"]
+[ext_resource type="AudioStream" uid="uid://dy54c8knx7bpf" path="res://assets/cutscene/intro_outro/OutroVerySerious.wav" id="4_dct03"]
+
+[node name="Outro" unique_id=1108311170 instance=ExtResource("1_27r8o")]
+script = ExtResource("2_i4nlu")
+
+[node name="Audio" parent="." index="0" unique_id=1114525072]
+stream = ExtResource("4_dct03")
+volume_db = 10.0
+
+[node name="Image" parent="." index="1" unique_id=1197058192]
+texture = ExtResource("2_tjgsd")
+
+[node name="Subtitles" parent="." index="2" unique_id=509790576]
+visible = false
+
+[node name="OutroMusic" type="AudioStreamPlayer" parent="." index="3" unique_id=1954726777]
+stream = ExtResource("3_i4nlu")
+volume_db = -15.0

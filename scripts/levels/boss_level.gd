@@ -6,6 +6,7 @@ extends Node2D
 @onready var propeller_drop_timer: Timer = $PropellerDropTimer
 @onready var propeller_path: PathFollow2D = $ItemDropPath/PathFollow2D
 @onready var item_get: AudioStreamPlayer = $ItemGet
+@onready var beam_fire: AudioStreamPlayer = $BeamFire
 
 func _ready() -> void:
 	player.visible = true
@@ -97,6 +98,7 @@ func _on_boss_death_sequence() -> void:
 	await tween.finished
 	
 	await player_is_under_boss()
+	beam_fire.play()
 	player.visible = false
 	player.boss_dead = true
 	
@@ -110,3 +112,4 @@ func _on_boss_death_sequence() -> void:
 	npc_spin.play("npc_spin")
 	await npc_spin.animation_finished
 	show_prompt(false)
+	get_tree().change_scene_to_file("res://scenes/game/outro.tscn")

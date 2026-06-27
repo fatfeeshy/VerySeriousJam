@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://cqeyf70j28n2g"]
+
+[ext_resource type="PackedScene" uid="uid://p2wcdumi1qj6" path="res://scenes/cutscene.tscn" id="1_ccjyn"]
+[ext_resource type="Script" uid="uid://bawcb1dpahrvt" path="res://scenes/game/intro.gd" id="2_hpjil"]
+[ext_resource type="Texture2D" uid="uid://blgnhuk1v3rok" path="res://assets/cutscene/intro_outro/intro1.png" id="3_38v12"]
+[ext_resource type="AudioStream" uid="uid://cps10px2su6si" path="res://assets/cutscene/intro_outro/introVerySerious.wav" id="3_du8i8"]
+[ext_resource type="AudioStream" uid="uid://cynuapimf7or7" path="res://assets/cutscene/intro_outro/dariocoiro-intro.mp3" id="3_yqls2"]
+[ext_resource type="AudioStream" uid="uid://chmy0tt7cdnm6" path="res://assets/cutscene/intro_outro/introp1.wav" id="4_38v12"]
+
+[node name="Intro" unique_id=1108311170 instance=ExtResource("1_ccjyn")]
+script = ExtResource("2_hpjil")
+
+[node name="Audio" parent="." index="0" unique_id=1114525072]
+stream = ExtResource("3_du8i8")
+volume_db = 8.0
+
+[node name="Image" parent="." index="1" unique_id=1197058192]
+texture = ExtResource("3_38v12")
+
+[node name="Subtitles" parent="." index="2" unique_id=509790576]
+visible = false
+
+[node name="DariocoiroIntro" type="AudioStreamPlayer" parent="." index="3" unique_id=1173150684]
+stream = ExtResource("3_yqls2")
+volume_db = -10.0
+
+[node name="Introp1" type="AudioStreamPlayer" parent="." index="4" unique_id=6532934]
+stream = ExtResource("4_38v12")
+volume_db = -10.0

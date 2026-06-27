@@ -11,16 +11,16 @@ config_version=5
 [application]
 
 config/name="VerySeriousJam"
-run/main_scene="uid://b3v4xb1jxa3p7"
+run/main_scene="uid://cqeyf70j28n2g"
 config/features=PackedStringArray("4.7", "GL Compatibility")
 config/icon="uid://dhs0khlrea13"
 
 [autoload]
 
-InteractionManager="*uid://boiikc684gvlk"
-DialogManager="*uid://b202jly0l8olk"
 DialogueManager="*uid://c3rodes2l3gxb"
 Globals="*uid://cctxlevo7b4jb"
+InteractionManager="*uid://boiikc684gvlk"
+DialogManager="*uid://b202jly0l8olk"
 
 [display]
 

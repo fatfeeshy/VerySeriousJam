@@ -8,7 +8,9 @@ extends Area2D
 @onready var chugchug: AudioStreamPlayer = $"../Chugchug"
 @onready var corporate_music: AudioStreamPlayer = $"../CorporateMusic"
 @onready var player: CharacterBody2D = $"../Player"
+const WHEEL = preload("uid://qj5f5x0iedci")
 
+var played_end = false
 var won = false
 var friend_sprite := Rect2(0, 0, 16, 17)
 var secretary_sprite := Rect2(16, 0, 16, 17)
@@ -28,7 +30,8 @@ func _ready() -> void:
 func _on_body_entered(body: CharacterBody2D) -> void:
 	animation.play("recruited")
 	
-	if (won):
+	if (won and not played_end):
+		played_end = true
 		player.set_money_emit(false)
 		corporate_music.stop()
 		record_scratch.play()
@@ -39,8 +42,10 @@ func _on_body_entered(body: CharacterBody2D) -> void:
 		await get_tree().create_timer(2).timeout
 		label.text = "My music, not corpo slop!!"
 		animation.play("recruited")
+		
+		globals.finishedAccountant = true
 		await get_tree().create_timer(7).timeout
-		get_tree().change_scene_to_file("res://scenes/game/wheel.tscn")
+		get_tree().change_scene_to_packed(WHEEL)
 	
 
 func set_text(text):

@@ -397,9 +397,11 @@ one_shot = true
 
 [node name="BeamFire" type="AudioStreamPlayer" parent="." unique_id=222124551]
 stream = ExtResource("5_yuu4j")
+volume_db = -5.0
 
 [node name="BossDamage" type="AudioStreamPlayer" parent="." unique_id=688370195]
 stream = ExtResource("6_oufk1")
+volume_db = -7.0
 
 [connection signal="body_entered" from="." to="." method="_on_boss_body_entered"]
 [connection signal="body_entered" from="Attacks/Laser" to="." method="_on_laser_body_entered"]

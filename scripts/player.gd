@@ -6,6 +6,8 @@ var speed := 90
 var jump := -125
 var gravity := 4
 var acceleration := 19
+var was_on_floor := false
+
 var facing : int
 var dead : bool
 var boss_dead : bool
@@ -85,6 +87,9 @@ func _physics_process(_delta: float) -> void:
 		return
 	Movement()
 	Jumping()
+	if was_on_floor and !is_on_floor():
+		coyote_timer.start()
+	was_on_floor = is_on_floor()
 	Gravity()
 	ApplyWind()
 	Animations()
@@ -136,44 +141,51 @@ func Movement():
 	if Input.is_action_pressed("left"): facing = -1
 	if Input.is_action_pressed("right"): facing = 1
 
-var jumped : bool # supposed to be outside of Jumping()
+#var jumped : bool # supposed to be outside of Jumping()
 func Jumping():
-	var attempted_buffer : bool
-	
-	# Mini State Machine
-	if is_on_floor():
-		attempted_buffer = false
-		jumped = false
-	
-	# Regular Jumping
-	if Input.is_action_just_pressed("jump") and is_on_floor():
-		Jump()
-		jump_sfx.play()
-	
-	# Jump Buffer Logic
-	if Input.is_action_just_pressed("jump") and not is_on_floor()\
-											and not attempted_buffer:
-		jump_buffer.start()
-		jump_sfx.play()
-		attempted_buffer = true
-	if jump_buffer.is_stopped():
-		return
-	if is_on_floor():
-		Jump()
-		jump_sfx.play()
-	
-	# Coyote Time Logic
-	if not is_on_floor() and not jumped:
-		coyote_timer.start()
-	if coyote_timer.is_stopped():
-		return
+	#var attempted_buffer : bool
+	#
+	## Mini State Machine
+	#if is_on_floor():
+		#attempted_buffer = false
+		#jumped = false
+	#
+	## Regular Jumping
+	#if Input.is_action_just_pressed("jump") and is_on_floor():
+		#Jump()
+	#
+	## Jump Buffer Logic
+	#if Input.is_action_just_pressed("jump") and not is_on_floor()\
+											#and not attempted_buffer:
+		#jump_buffer.start()
+		#attempted_buffer = true
+	#if jump_buffer.is_stopped():
+		#return
+	#if is_on_floor():
+		#Jump()
+	#
+	## Coyote Time Logic
+	#if not is_on_floor() and not jumped:
+		#coyote_timer.start()
+	#if coyote_timer.is_stopped():
+		#return
+	#if Input.is_action_just_pressed("jump"):
+		#Jump()
+		 # Store jump input
 	if Input.is_action_just_pressed("jump"):
+		jump_buffer.start()
+
+	var can_jump = is_on_floor() or !coyote_timer.is_stopped()
+
+	if can_jump and !jump_buffer.is_stopped():
 		Jump()
-		jump_sfx.play()
 
 func Jump():
 	velocity.y = jump
-	jumped = true
+	jump_sfx.play()
+	coyote_timer.stop()
+	jump_buffer.stop()
+
 
 func Gravity():
 	if is_on_floor():
