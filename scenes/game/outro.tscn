@@ -11,7 +11,7 @@ script = ExtResource("2_i4nlu")
 
 [node name="Audio" parent="." index="0" unique_id=1114525072]
 stream = ExtResource("4_dct03")
-volume_db = 10.0
+volume_db = 15.0
 
 [node name="Image" parent="." index="1" unique_id=1197058192]
 texture = ExtResource("2_tjgsd")
@@ -21,4 +21,4 @@ visible = false
 
 [node name="OutroMusic" type="AudioStreamPlayer" parent="." index="3" unique_id=1954726777]
 stream = ExtResource("3_i4nlu")
-volume_db = -15.0
+volume_db = -8.0

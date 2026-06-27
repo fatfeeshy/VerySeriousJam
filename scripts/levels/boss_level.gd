@@ -111,5 +111,6 @@ func _on_boss_death_sequence() -> void:
 	await spacebar_pressed()
 	npc_spin.play("npc_spin")
 	await npc_spin.animation_finished
+
 	show_prompt(false)
 	get_tree().change_scene_to_file("res://scenes/game/outro.tscn")

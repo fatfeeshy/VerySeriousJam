@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://bvvvnjgctcx5d" path="res://assets/temporary/temp_ticker.png" id="2_xntae"]
 [ext_resource type="Texture2D" uid="uid://bgl8chuj3sv54" path="res://assets/sprites/spin-wheel.png" id="3_1mw02"]
 [ext_resource type="AudioStream" uid="uid://bpxd7k50d4puu" path="res://assets/sfx/spin-prize-wheel-sfx.mp3" id="5_1mw02"]
+[ext_resource type="Texture2D" uid="uid://cssm2dq5t868g" path="res://assets/sprites/tip-text.png" id="6_bfobc"]
 
 [node name="wheel" type="Node2D" unique_id=615941058]
 script = ExtResource("1_xntae")
@@ -29,3 +30,7 @@ offset_bottom = 23.0
 
 [node name="SpinPrizeWheelSfx" type="AudioStreamPlayer" parent="." unique_id=759931314]
 stream = ExtResource("5_1mw02")
+
+[node name="TipText" type="Sprite2D" parent="." unique_id=1172001036]
+position = Vector2(162, 161)
+texture = ExtResource("6_bfobc")

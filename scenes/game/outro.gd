@@ -3,7 +3,6 @@ extends Node2D
 @onready var audio: AudioStreamPlayer2D = $Audio
 @onready var image: TextureRect = $Image
 @onready var outro_music: AudioStreamPlayer = $OutroMusic
-@onready var outro_very_serious: AudioStreamPlayer = $OutroVerySerious
 
 var slides = [
 	{
